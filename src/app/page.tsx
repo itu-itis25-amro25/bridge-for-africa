@@ -93,7 +93,6 @@ const TEAM: TeamMember[] = [
   {
     name: "Eliya Amro",
     role: "Computer Engineering, ITU",
-    bio: "Polish-Tanzanian engineering student in Istanbul working across software and hardware, currently interning in IT alongside his degree.",
     linkedin: "https://www.linkedin.com/in/eliya-amro-91b619351/",
   },
   {

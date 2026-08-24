@@ -7,6 +7,88 @@ type TeamMember = {
   linkedin?: string;
 };
 
+type Stat = {
+  value: string;
+  label: string;
+  source: string;
+};
+
+const STATS: Stat[] = [
+  {
+    value: "9–10%",
+    label:
+      "Average increase in earnings for every additional year of schooling completed, worldwide.",
+    source: "World Bank",
+  },
+  {
+    value: "1 in 5",
+    label:
+      "African children of school age are currently out of school — about 20% of the continent's school-age population.",
+    source: "UNESCO, 2025",
+  },
+  {
+    value: "30%",
+    label:
+      "Of secondary school students in Uganda drop out before completing their education.",
+    source: "UNICEF Uganda",
+  },
+  {
+    value: "$15–30T",
+    label:
+      "Estimated global cost in lost lifetime earnings from not educating girls to the same level as boys.",
+    source: "World Bank, 2018",
+  },
+];
+
+type Benefit = {
+  title: string;
+  body: string;
+  source?: string;
+};
+
+const BENEFITS: Benefit[] = [
+  {
+    title: "It's about cost, not ability",
+    body: "In Uganda, financial barriers are the single most-cited reason children never enroll or drop out — not distance, not capacity, not interest. Some government-aided secondary schools charge families as much as $700 a term, and education now eats up roughly 8.5% of household spending, over four times the global average.",
+    source: "UNICEF Uganda, Policy Note 1/2024",
+  },
+  {
+    title: "It breaks the cycle",
+    body: "Children whose own education was funded are far more likely to keep their kids in school a generation later — a single paid tuition tends to compound well beyond one child.",
+    source: "World Bank",
+  },
+  {
+    title: "Girls see the largest gains",
+    body: "Secondary education for girls is linked to a near-elimination of child marriage, and women with a secondary education typically earn almost twice as much over their lives as those with none.",
+    source: "World Bank, 2018",
+  },
+];
+
+type Source = {
+  label: string;
+  url: string;
+};
+
+const SOURCES: Source[] = [
+  {
+    label: "World Bank — returns to investment in education",
+    url: "https://documents1.worldbank.org/curated/en/442521523465644318/pdf/WPS8402.pdf",
+  },
+  {
+    label:
+      "World Bank — \"Missed Opportunities: The High Cost of Not Educating Girls\" (2018)",
+    url: "https://www.worldbank.org/en/news/press-release/2018/07/11/not-educating-girls-costs-countries-trillions-of-dollars-says-new-world-bank-report",
+  },
+  {
+    label: "UNESCO — Global Education Monitoring Report / SDG 4 Scorecard",
+    url: "https://www.unesco.org/gem-report/en",
+  },
+  {
+    label: "UNICEF Uganda — Overcoming the Challenges of Education in Uganda",
+    url: "https://www.unicef.org/uganda/media/16861/file/Challenges%20of%20Education%20Sector%20in%20Uganda%20in%20Brief.pdf.pdf",
+  },
+];
+
 const TEAM: TeamMember[] = [
   {
     name: "Eliya Amro",
@@ -92,14 +174,45 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Why it matters — stats band */}
+        <section className="bg-zinc-900 py-20 text-white dark:bg-black">
+          <div className="mx-auto max-w-5xl px-6">
+            <p className="text-center text-sm font-medium uppercase tracking-wide text-zinc-400">
+              Why it matters
+            </p>
+            <h2 className="mt-3 text-center text-3xl font-semibold tracking-tight sm:text-4xl">
+              Tuition money is a lever, not a handout.
+            </h2>
+            <div className="mt-14 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+              {STATS.map((stat) => (
+                <div key={stat.label} className="text-center sm:text-left">
+                  <p className="text-4xl font-semibold tracking-tight tabular-nums sm:text-5xl">
+                    {stat.value}
+                  </p>
+                  <p className="mt-3 text-sm leading-6 text-zinc-300">
+                    {stat.label}
+                  </p>
+                  <p className="mt-3 text-xs font-medium uppercase tracking-wide text-zinc-500">
+                    {stat.source}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* How it works */}
         <section id="how-it-works" className="mx-auto max-w-4xl px-6 py-20">
           <h2 className="text-center text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
             How it works
           </h2>
-          <div className="mt-12 grid gap-10 sm:grid-cols-3">
-            <div className="text-center">
-              <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-zinc-900 text-sm font-semibold text-white dark:bg-white dark:text-zinc-900">
+          <div className="relative mt-16 grid gap-10 sm:grid-cols-3">
+            <div
+              aria-hidden
+              className="absolute top-5 right-0 left-0 hidden h-px bg-zinc-200 sm:block dark:bg-zinc-800"
+            />
+            <div className="relative text-center">
+              <div className="relative z-10 mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-zinc-900 text-sm font-semibold text-white ring-8 ring-zinc-50 dark:bg-white dark:text-zinc-900 dark:ring-zinc-950">
                 1
               </div>
               <h3 className="mt-4 font-medium text-zinc-900 dark:text-zinc-50">
@@ -110,8 +223,8 @@ export default function Home() {
                 what they can, every month.
               </p>
             </div>
-            <div className="text-center">
-              <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-zinc-900 text-sm font-semibold text-white dark:bg-white dark:text-zinc-900">
+            <div className="relative text-center">
+              <div className="relative z-10 mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-zinc-900 text-sm font-semibold text-white ring-8 ring-zinc-50 dark:bg-white dark:text-zinc-900 dark:ring-zinc-950">
                 2
               </div>
               <h3 className="mt-4 font-medium text-zinc-900 dark:text-zinc-50">
@@ -122,8 +235,8 @@ export default function Home() {
                 school fees.
               </p>
             </div>
-            <div className="text-center">
-              <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-zinc-900 text-sm font-semibold text-white dark:bg-white dark:text-zinc-900">
+            <div className="relative text-center">
+              <div className="relative z-10 mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-zinc-900 text-sm font-semibold text-white ring-8 ring-zinc-50 dark:bg-white dark:text-zinc-900 dark:ring-zinc-950">
                 3
               </div>
               <h3 className="mt-4 font-medium text-zinc-900 dark:text-zinc-50">
@@ -133,6 +246,40 @@ export default function Home() {
                 As more people join, we take on the next child who needs
                 support.
               </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Benefits / case for support */}
+        <section className="border-t border-zinc-200 bg-white py-20 dark:border-zinc-800 dark:bg-zinc-900">
+          <div className="mx-auto max-w-5xl px-6">
+            <h2 className="text-center text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
+              The case for a few dollars a month
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-center text-zinc-600 dark:text-zinc-400">
+              Paying tuition isn&rsquo;t charity in the abstract &mdash; it
+              removes the single biggest reason kids in Uganda leave school in
+              the first place.
+            </p>
+            <div className="mt-14 grid gap-8 sm:grid-cols-3">
+              {BENEFITS.map((benefit) => (
+                <div
+                  key={benefit.title}
+                  className="rounded-2xl border border-zinc-200 p-6 dark:border-zinc-800"
+                >
+                  <h3 className="font-medium text-zinc-900 dark:text-zinc-50">
+                    {benefit.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
+                    {benefit.body}
+                  </p>
+                  {benefit.source && (
+                    <p className="mt-4 text-xs font-medium uppercase tracking-wide text-zinc-400 dark:text-zinc-500">
+                      {benefit.source}
+                    </p>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -196,11 +343,30 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="border-t border-zinc-200 py-8 dark:border-zinc-800">
-        <p className="text-center text-sm text-zinc-500 dark:text-zinc-500">
-          Bridge for Africa &mdash; built by international students in
-          Turkey.
-        </p>
+      <footer className="border-t border-zinc-200 py-10 dark:border-zinc-800">
+        <div className="mx-auto max-w-4xl px-6">
+          <p className="text-xs font-medium uppercase tracking-wide text-zinc-400 dark:text-zinc-500">
+            Sources
+          </p>
+          <ul className="mt-3 flex flex-col gap-1.5 sm:flex-row sm:flex-wrap sm:gap-x-6 sm:gap-y-1.5">
+            {SOURCES.map((source) => (
+              <li key={source.url}>
+                <a
+                  href={source.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-zinc-500 underline decoration-zinc-300 underline-offset-4 hover:text-zinc-700 dark:text-zinc-500 dark:decoration-zinc-700 dark:hover:text-zinc-300"
+                >
+                  {source.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-8 text-center text-sm text-zinc-500 dark:text-zinc-500">
+            Bridge for Africa &mdash; built by international students in
+            Turkey.
+          </p>
+        </div>
       </footer>
     </div>
   );

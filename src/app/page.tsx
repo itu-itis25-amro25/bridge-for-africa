@@ -180,13 +180,13 @@ export default async function Home() {
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
                 href="/contribute"
-                className="w-full rounded-full bg-zinc-900 px-6 py-3 text-sm font-medium text-white transition-all hover:bg-zinc-700 motion-safe:hover:-translate-y-0.5 motion-safe:active:scale-95 sm:w-auto dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+                className="w-full rounded-full bg-zinc-900 px-6 py-3 text-sm font-medium text-white transition-all duration-300 hover:bg-zinc-700 motion-safe:hover:-translate-y-0.5 motion-safe:active:scale-95 sm:w-auto dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
               >
                 Contribute monthly
               </Link>
               <a
                 href="#how-it-works"
-                className="w-full rounded-full border border-zinc-300 px-6 py-3 text-sm font-medium text-zinc-900 transition-all hover:bg-zinc-100 motion-safe:hover:-translate-y-0.5 motion-safe:active:scale-95 sm:w-auto dark:border-zinc-700 dark:text-zinc-50 dark:hover:bg-zinc-900"
+                className="w-full rounded-full border border-zinc-300 px-6 py-3 text-sm font-medium text-zinc-900 transition-all duration-300 hover:bg-zinc-100 motion-safe:hover:-translate-y-0.5 motion-safe:active:scale-95 sm:w-auto dark:border-zinc-700 dark:text-zinc-50 dark:hover:bg-zinc-900"
               >
                 How it works
               </a>
@@ -233,7 +233,7 @@ export default async function Home() {
               {STATS.map((stat, i) => (
                 <Reveal
                   key={stat.label}
-                  delay={i * 100}
+                  delay={i * 180}
                   variant="scale"
                   className="text-center sm:text-left"
                 >
@@ -313,9 +313,9 @@ export default async function Home() {
               {BENEFITS.map((benefit, i) => (
                 <Reveal
                   key={benefit.title}
-                  delay={i * 100}
+                  delay={i * 180}
                   variant={i === 0 ? "left" : i === 2 ? "right" : "up"}
-                  className="rounded-2xl border border-zinc-200 p-6 transition-all motion-safe:hover:-translate-y-1 hover:border-zinc-300 hover:shadow-lg dark:border-zinc-800 dark:hover:border-zinc-700"
+                  className="rounded-2xl border border-zinc-200 p-6 transition-all duration-300 motion-safe:hover:-translate-y-1 hover:border-zinc-300 hover:shadow-lg dark:border-zinc-800 dark:hover:border-zinc-700"
                 >
                   <h3 className="font-medium text-zinc-900 dark:text-zinc-50">
                     {benefit.title}
@@ -344,9 +344,9 @@ export default async function Home() {
               {TEAM.map((member, i) => (
                 <Reveal
                   key={member.name}
-                  delay={(i % 2) * 100}
+                  delay={(i % 2) * 180}
                   variant="scale"
-                  className="rounded-2xl border border-zinc-200 bg-zinc-50 p-6 transition-all motion-safe:hover:-translate-y-1 hover:border-zinc-300 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-950 dark:hover:border-zinc-700"
+                  className="rounded-2xl border border-zinc-200 bg-zinc-50 p-6 transition-all duration-300 motion-safe:hover:-translate-y-1 hover:border-zinc-300 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-950 dark:hover:border-zinc-700"
                 >
                   <h3 className="font-medium text-zinc-900 dark:text-zinc-50">
                     {member.name}

@@ -8,7 +8,7 @@ export function DrawLine({ className = "" }: { className?: string }) {
   return (
     <div
       aria-hidden
-      className={`origin-left transition-transform duration-[1200ms] ease-out ${
+      className={`origin-left transition-transform duration-[2200ms] ease-out ${
         inView ? "scale-x-100" : "scale-x-0"
       } ${className}`}
       ref={ref}

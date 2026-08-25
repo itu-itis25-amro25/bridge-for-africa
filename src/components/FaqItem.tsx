@@ -21,7 +21,7 @@ export function FaqItem({
       >
         {question}
         <span
-          className={`shrink-0 text-zinc-400 transition-transform duration-300 ${
+          className={`shrink-0 text-zinc-400 transition-transform duration-500 ${
             open ? "rotate-45" : ""
           }`}
         >
@@ -29,7 +29,7 @@ export function FaqItem({
         </span>
       </button>
       <div
-        className="grid transition-[grid-template-rows] duration-300 ease-out"
+        className="grid transition-[grid-template-rows] duration-500 ease-out"
         style={{ gridTemplateRows: open ? "1fr" : "0fr" }}
       >
         <div className="overflow-hidden">

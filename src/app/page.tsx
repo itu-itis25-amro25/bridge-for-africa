@@ -1,4 +1,6 @@
-const CONTACT_EMAIL = "amro25@itu.edu.tr";
+import Link from "next/link";
+import { Header } from "@/components/Header";
+import { CONTACT_EMAIL } from "@/lib/constants";
 
 type TeamMember = {
   name: string;
@@ -115,36 +117,7 @@ const TEAM: TeamMember[] = [
 export default function Home() {
   return (
     <div className="flex flex-1 flex-col bg-zinc-50 font-sans dark:bg-zinc-950">
-      {/* Header */}
-      <header className="border-b border-zinc-200 dark:border-zinc-800">
-        <div className="mx-auto flex max-w-4xl items-center justify-between px-6 py-5">
-          <span className="flex items-center gap-2.5 text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
-            <svg
-              width="22"
-              height="22"
-              viewBox="0 0 32 32"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.6"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
-              <line x1="4" y1="23" x2="28" y2="23" />
-              <line x1="10" y1="23" x2="10" y2="8" />
-              <line x1="22" y1="23" x2="22" y2="8" />
-              <path d="M10,8 Q16,17 22,8" />
-            </svg>
-            Bridge for Africa
-          </span>
-          <a
-            href={`mailto:${CONTACT_EMAIL}`}
-            className="rounded-full bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-700 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
-          >
-            Join us
-          </a>
-        </div>
-      </header>
+      <Header />
 
       <main className="flex-1">
         {/* Hero */}
@@ -158,12 +131,12 @@ export default function Home() {
             Africa &mdash; starting in Uganda.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a
-              href={`mailto:${CONTACT_EMAIL}`}
+            <Link
+              href="/contribute"
               className="w-full rounded-full bg-zinc-900 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-zinc-700 sm:w-auto dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
             >
               Contribute monthly
-            </a>
+            </Link>
             <a
               href="#how-it-works"
               className="w-full rounded-full border border-zinc-300 px-6 py-3 text-sm font-medium text-zinc-900 transition-colors hover:bg-zinc-100 sm:w-auto dark:border-zinc-700 dark:text-zinc-50 dark:hover:bg-zinc-900"

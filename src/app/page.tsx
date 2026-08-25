@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { Header } from "@/components/Header";
 import { CONTACT_EMAIL } from "@/lib/constants";
+import { getTotals } from "@/lib/db";
+
+export const dynamic = "force-dynamic";
 
 type TeamMember = {
   name: string;
@@ -114,7 +117,9 @@ const TEAM: TeamMember[] = [
   },
 ];
 
-export default function Home() {
+export default async function Home() {
+  const totals = await getTotals();
+
   return (
     <div className="flex flex-1 flex-col bg-zinc-50 font-sans dark:bg-zinc-950">
       <Header />
@@ -158,6 +163,15 @@ export default function Home() {
             </p>
             <p className="mt-3 text-zinc-600 dark:text-zinc-400">
               Every new member gets us closer to supporting the next child.
+            </p>
+            <p className="mt-6 text-sm font-medium text-zinc-500 dark:text-zinc-400">
+              {totals.count > 0
+                ? `₺${totals.total.toLocaleString(
+                    "en-US"
+                  )} raised so far from ${totals.count} contributor${
+                    totals.count === 1 ? "" : "s"
+                  }.`
+                : "No contributions yet — yours could be the first."}
             </p>
           </div>
         </section>
@@ -353,6 +367,14 @@ export default function Home() {
           <p className="mt-8 text-center text-sm text-zinc-500 dark:text-zinc-500">
             Bridge for Africa &mdash; built by international students in
             Turkey.
+          </p>
+          <p className="mt-2 text-center text-xs text-zinc-400 dark:text-zinc-600">
+            <Link
+              href="/privacy"
+              className="underline decoration-zinc-300 underline-offset-4 hover:text-zinc-600 dark:decoration-zinc-700 dark:hover:text-zinc-400"
+            >
+              Privacy
+            </Link>
           </p>
         </div>
       </footer>

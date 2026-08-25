@@ -17,6 +17,7 @@ export function DetailsForm() {
   const [job, setJob] = useState("");
   const [anonymous, setAnonymous] = useState(false);
   const [notes, setNotes] = useState("");
+  const [company, setCompany] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [donorLabel, setDonorLabel] = useState("");
 
@@ -40,6 +41,7 @@ export function DetailsForm() {
           job: job.trim(),
           anonymous,
           notes: notes.trim(),
+          company,
         }),
       });
       if (!res.ok) throw new Error("failed");
@@ -94,6 +96,17 @@ export function DetailsForm() {
       </div>
 
       <form onSubmit={handleSubmit} className="mt-8 flex flex-col gap-5">
+        <input
+          type="text"
+          name="company"
+          value={company}
+          onChange={(e) => setCompany(e.target.value)}
+          className="sr-only"
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+        />
+
         <div className="grid grid-cols-2 gap-4">
           <Field label="Name" htmlFor="name">
             <input

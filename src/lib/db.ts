@@ -24,3 +24,12 @@ export function ensureSchema() {
   }
   return schemaReady;
 }
+
+export async function getTotals() {
+  await ensureSchema();
+  const rows = await sql`
+    SELECT COALESCE(SUM(amount), 0) AS total, COUNT(*) AS count FROM donors
+  `;
+  const row = rows[0] as { total: string; count: string };
+  return { total: Number(row.total), count: Number(row.count) };
+}

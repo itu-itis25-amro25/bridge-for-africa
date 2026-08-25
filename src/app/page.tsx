@@ -2,6 +2,8 @@ import Link from "next/link";
 import { Header } from "@/components/Header";
 import { CONTACT_EMAIL } from "@/lib/constants";
 import { getTotals } from "@/lib/db";
+import { Reveal } from "@/components/Reveal";
+import { CountUp } from "@/components/CountUp";
 
 export const dynamic = "force-dynamic";
 
@@ -160,33 +162,39 @@ export default async function Home() {
       <main className="flex-1">
         {/* Hero */}
         <section className="mx-auto max-w-4xl px-6 py-20 text-center sm:py-28">
-          <h1 className="text-4xl font-semibold tracking-tight text-zinc-900 sm:text-5xl dark:text-zinc-50">
-            A monthly bridge to a kid&rsquo;s education.
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            We&rsquo;re a group of international students in Turkey who pool a small
-            monthly contribution to pay school tuition for kids in need in
-            Africa &mdash; starting in Uganda.
-          </p>
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link
-              href="/contribute"
-              className="w-full rounded-full bg-zinc-900 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-zinc-700 sm:w-auto dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
-            >
-              Contribute monthly
-            </Link>
-            <a
-              href="#how-it-works"
-              className="w-full rounded-full border border-zinc-300 px-6 py-3 text-sm font-medium text-zinc-900 transition-colors hover:bg-zinc-100 sm:w-auto dark:border-zinc-700 dark:text-zinc-50 dark:hover:bg-zinc-900"
-            >
-              How it works
-            </a>
-          </div>
+          <Reveal>
+            <h1 className="text-4xl font-semibold tracking-tight text-zinc-900 sm:text-5xl dark:text-zinc-50">
+              A monthly bridge to a kid&rsquo;s education.
+            </h1>
+          </Reveal>
+          <Reveal delay={100}>
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-zinc-600 dark:text-zinc-400">
+              We&rsquo;re a group of international students in Turkey who pool a small
+              monthly contribution to pay school tuition for kids in need in
+              Africa &mdash; starting in Uganda.
+            </p>
+          </Reveal>
+          <Reveal delay={200}>
+            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <Link
+                href="/contribute"
+                className="w-full rounded-full bg-zinc-900 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-zinc-700 motion-safe:hover:-translate-y-0.5 sm:w-auto dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+              >
+                Contribute monthly
+              </Link>
+              <a
+                href="#how-it-works"
+                className="w-full rounded-full border border-zinc-300 px-6 py-3 text-sm font-medium text-zinc-900 transition-colors hover:bg-zinc-100 motion-safe:hover:-translate-y-0.5 sm:w-auto dark:border-zinc-700 dark:text-zinc-50 dark:hover:bg-zinc-900"
+              >
+                How it works
+              </a>
+            </div>
+          </Reveal>
         </section>
 
         {/* Current impact */}
         <section className="border-y border-zinc-200 bg-white py-14 dark:border-zinc-800 dark:bg-zinc-900">
-          <div className="mx-auto max-w-4xl px-6 text-center">
+          <Reveal className="mx-auto max-w-4xl px-6 text-center">
             <p className="text-sm font-medium uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
               Right now
             </p>
@@ -198,15 +206,16 @@ export default async function Home() {
               Every new member gets us closer to supporting the next child.
             </p>
             <p className="mt-6 text-sm font-medium text-zinc-500 dark:text-zinc-400">
-              {totals.count > 0
-                ? `₺${totals.total.toLocaleString(
-                    "en-US"
-                  )} raised so far from ${totals.count} contributor${
-                    totals.count === 1 ? "" : "s"
-                  }.`
-                : "No contributions yet — yours could be the first."}
+              {totals.count > 0 ? (
+                <>
+                  ₺<CountUp value={totals.total} /> raised so far from{" "}
+                  {totals.count} contributor{totals.count === 1 ? "" : "s"}.
+                </>
+              ) : (
+                "No contributions yet — yours could be the first."
+              )}
             </p>
-          </div>
+          </Reveal>
         </section>
 
         {/* Why it matters — stats band */}
@@ -219,8 +228,12 @@ export default async function Home() {
               Tuition money is a lever, not a handout.
             </h2>
             <div className="mt-14 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
-              {STATS.map((stat) => (
-                <div key={stat.label} className="text-center sm:text-left">
+              {STATS.map((stat, i) => (
+                <Reveal
+                  key={stat.label}
+                  delay={i * 100}
+                  className="text-center sm:text-left"
+                >
                   <p className="text-4xl font-semibold tracking-tight tabular-nums sm:text-5xl">
                     {stat.value}
                   </p>
@@ -230,7 +243,7 @@ export default async function Home() {
                   <p className="mt-3 text-xs font-medium uppercase tracking-wide text-zinc-500">
                     {stat.source}
                   </p>
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -246,7 +259,7 @@ export default async function Home() {
               aria-hidden
               className="absolute top-5 right-0 left-0 hidden h-px bg-zinc-200 sm:block dark:bg-zinc-800"
             />
-            <div className="relative text-center">
+            <Reveal delay={0} className="relative text-center">
               <div className="relative z-10 mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-zinc-900 text-sm font-semibold text-white ring-8 ring-zinc-50 dark:bg-white dark:text-zinc-900 dark:ring-zinc-950">
                 1
               </div>
@@ -257,8 +270,8 @@ export default async function Home() {
                 A small group of international students in Turkey each give
                 what they can, every month.
               </p>
-            </div>
-            <div className="relative text-center">
+            </Reveal>
+            <Reveal delay={150} className="relative text-center">
               <div className="relative z-10 mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-zinc-900 text-sm font-semibold text-white ring-8 ring-zinc-50 dark:bg-white dark:text-zinc-900 dark:ring-zinc-950">
                 2
               </div>
@@ -269,8 +282,8 @@ export default async function Home() {
                 Contributions are pooled and paid directly toward a child&rsquo;s
                 school fees.
               </p>
-            </div>
-            <div className="relative text-center">
+            </Reveal>
+            <Reveal delay={300} className="relative text-center">
               <div className="relative z-10 mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-zinc-900 text-sm font-semibold text-white ring-8 ring-zinc-50 dark:bg-white dark:text-zinc-900 dark:ring-zinc-950">
                 3
               </div>
@@ -281,7 +294,7 @@ export default async function Home() {
                 As more people join, we take on the next child who needs
                 support.
               </p>
-            </div>
+            </Reveal>
           </div>
         </section>
 
@@ -297,10 +310,11 @@ export default async function Home() {
               the first place.
             </p>
             <div className="mt-14 grid gap-8 sm:grid-cols-3">
-              {BENEFITS.map((benefit) => (
-                <div
+              {BENEFITS.map((benefit, i) => (
+                <Reveal
                   key={benefit.title}
-                  className="rounded-2xl border border-zinc-200 p-6 dark:border-zinc-800"
+                  delay={i * 100}
+                  className="rounded-2xl border border-zinc-200 p-6 transition-all motion-safe:hover:-translate-y-1 hover:border-zinc-300 hover:shadow-lg dark:border-zinc-800 dark:hover:border-zinc-700"
                 >
                   <h3 className="font-medium text-zinc-900 dark:text-zinc-50">
                     {benefit.title}
@@ -313,7 +327,7 @@ export default async function Home() {
                       {benefit.source}
                     </p>
                   )}
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -326,10 +340,11 @@ export default async function Home() {
               Who&rsquo;s behind it
             </h2>
             <div className="mt-12 grid gap-8 sm:grid-cols-2">
-              {TEAM.map((member) => (
-                <div
+              {TEAM.map((member, i) => (
+                <Reveal
                   key={member.name}
-                  className="rounded-2xl border border-zinc-200 bg-zinc-50 p-6 dark:border-zinc-800 dark:bg-zinc-950"
+                  delay={(i % 2) * 100}
+                  className="rounded-2xl border border-zinc-200 bg-zinc-50 p-6 transition-all motion-safe:hover:-translate-y-1 hover:border-zinc-300 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-950 dark:hover:border-zinc-700"
                 >
                   <h3 className="font-medium text-zinc-900 dark:text-zinc-50">
                     {member.name}
@@ -352,7 +367,7 @@ export default async function Home() {
                       LinkedIn
                     </a>
                   )}
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -389,7 +404,7 @@ export default async function Home() {
 
         {/* Join / contact */}
         <section className="bg-white py-20 dark:bg-zinc-900">
-          <div className="mx-auto max-w-2xl px-6 text-center">
+          <Reveal className="mx-auto max-w-2xl px-6 text-center">
             <h2 className="text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
               Want to join?
             </h2>
@@ -403,7 +418,7 @@ export default async function Home() {
             >
               {CONTACT_EMAIL}
             </a>
-          </div>
+          </Reveal>
         </section>
       </main>
 

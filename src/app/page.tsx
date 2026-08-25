@@ -94,6 +94,39 @@ const SOURCES: Source[] = [
   },
 ];
 
+type FaqItem = {
+  question: string;
+  answer: string;
+};
+
+const FAQ: FaqItem[] = [
+  {
+    question: "Are you a registered nonprofit?",
+    answer:
+      "Not yet. Bridge for Africa started about 7 months ago as a small group project. As we grow and bring on third-party contributors, we're working toward formal registration.",
+  },
+  {
+    question: "How much does each core member contribute?",
+    answer:
+      "Each of our 7 founding members contributes ₺500 every month. Third-party contributors can give any amount they choose.",
+  },
+  {
+    question: "How do you decide which child gets funded?",
+    answer:
+      "We look at demonstrated financial need. The child we currently support in Uganda was selected this way, and we're working to formalize this process as the group grows.",
+  },
+  {
+    question: "Is a contribution recurring or one-time?",
+    answer:
+      "Whatever works for you. Third-party contributions can be made at any time — a single gift or something you repeat, there's no fixed schedule required.",
+  },
+  {
+    question: "How do you know the money actually reaches the child?",
+    answer:
+      "We provide proof of payment — tuition receipts or other documentation of the educational costs covered.",
+  },
+];
+
 const TEAM: TeamMember[] = [
   {
     name: "Eliya Amro",
@@ -118,7 +151,7 @@ const TEAM: TeamMember[] = [
 ];
 
 export default async function Home() {
-  const totals = await getTotals();
+  const totals = await getTotals().catch(() => ({ total: 0, count: 0 }));
 
   return (
     <div className="flex flex-1 flex-col bg-zinc-50 font-sans dark:bg-zinc-950">
@@ -320,6 +353,35 @@ export default async function Home() {
                     </a>
                   )}
                 </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section id="faq" className="border-t border-zinc-200 bg-zinc-50 py-20 dark:border-zinc-800 dark:bg-zinc-950">
+          <div className="mx-auto max-w-2xl px-6">
+            <h2 className="text-center text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
+              Frequently asked questions
+            </h2>
+            <div className="mt-10 flex flex-col gap-3">
+              {FAQ.map((item) => (
+                <details
+                  key={item.question}
+                  className="group rounded-xl border border-zinc-200 bg-white px-5 py-4 dark:border-zinc-800 dark:bg-zinc-900"
+                >
+                  <summary className="cursor-pointer list-none text-sm font-medium text-zinc-900 marker:content-none dark:text-zinc-50">
+                    <span className="flex items-center justify-between gap-4">
+                      {item.question}
+                      <span className="shrink-0 text-zinc-400 transition-transform group-open:rotate-45">
+                        +
+                      </span>
+                    </span>
+                  </summary>
+                  <p className="mt-3 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
+                    {item.answer}
+                  </p>
+                </details>
               ))}
             </div>
           </div>

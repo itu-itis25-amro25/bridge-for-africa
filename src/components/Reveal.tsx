@@ -1,46 +1,37 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useInView } from "@/lib/useInView";
+
+type Variant = "up" | "scale" | "left" | "right";
+
+const HIDDEN: Record<Variant, string> = {
+  up: "translate-y-6 opacity-0",
+  scale: "scale-90 opacity-0",
+  left: "-translate-x-8 opacity-0",
+  right: "translate-x-8 opacity-0",
+};
+
+const SHOWN =
+  "translate-y-0 translate-x-0 scale-100 opacity-100";
 
 export function Reveal({
   children,
   delay = 0,
+  variant = "up",
   className = "",
 }: {
   children: React.ReactNode;
   delay?: number;
+  variant?: Variant;
   className?: string;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setVisible(true);
-      return;
-    }
-
-    const el = ref.current;
-    if (!el) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.15 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+  const { ref, inView } = useInView<HTMLDivElement>();
 
   return (
     <div
       ref={ref}
       className={`transition-all duration-700 ease-out ${
-        visible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+        inView ? SHOWN : HIDDEN[variant]
       } ${className}`}
       style={{ transitionDelay: `${delay}ms` }}
     >

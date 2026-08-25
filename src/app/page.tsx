@@ -4,6 +4,8 @@ import { CONTACT_EMAIL } from "@/lib/constants";
 import { getTotals } from "@/lib/db";
 import { Reveal } from "@/components/Reveal";
 import { CountUp } from "@/components/CountUp";
+import { DrawLine } from "@/components/DrawLine";
+import { FaqItem } from "@/components/FaqItem";
 
 export const dynamic = "force-dynamic";
 
@@ -178,13 +180,13 @@ export default async function Home() {
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
                 href="/contribute"
-                className="w-full rounded-full bg-zinc-900 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-zinc-700 motion-safe:hover:-translate-y-0.5 sm:w-auto dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+                className="w-full rounded-full bg-zinc-900 px-6 py-3 text-sm font-medium text-white transition-all hover:bg-zinc-700 motion-safe:hover:-translate-y-0.5 motion-safe:active:scale-95 sm:w-auto dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
               >
                 Contribute monthly
               </Link>
               <a
                 href="#how-it-works"
-                className="w-full rounded-full border border-zinc-300 px-6 py-3 text-sm font-medium text-zinc-900 transition-colors hover:bg-zinc-100 motion-safe:hover:-translate-y-0.5 sm:w-auto dark:border-zinc-700 dark:text-zinc-50 dark:hover:bg-zinc-900"
+                className="w-full rounded-full border border-zinc-300 px-6 py-3 text-sm font-medium text-zinc-900 transition-all hover:bg-zinc-100 motion-safe:hover:-translate-y-0.5 motion-safe:active:scale-95 sm:w-auto dark:border-zinc-700 dark:text-zinc-50 dark:hover:bg-zinc-900"
               >
                 How it works
               </a>
@@ -232,6 +234,7 @@ export default async function Home() {
                 <Reveal
                   key={stat.label}
                   delay={i * 100}
+                  variant="scale"
                   className="text-center sm:text-left"
                 >
                   <p className="text-4xl font-semibold tracking-tight tabular-nums sm:text-5xl">
@@ -255,10 +258,7 @@ export default async function Home() {
             How it works
           </h2>
           <div className="relative mt-16 grid gap-10 sm:grid-cols-3">
-            <div
-              aria-hidden
-              className="absolute top-5 right-0 left-0 hidden h-px bg-zinc-200 sm:block dark:bg-zinc-800"
-            />
+            <DrawLine className="absolute top-5 right-0 left-0 hidden h-px bg-zinc-200 sm:block dark:bg-zinc-800" />
             <Reveal delay={0} className="relative text-center">
               <div className="relative z-10 mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-zinc-900 text-sm font-semibold text-white ring-8 ring-zinc-50 dark:bg-white dark:text-zinc-900 dark:ring-zinc-950">
                 1
@@ -314,6 +314,7 @@ export default async function Home() {
                 <Reveal
                   key={benefit.title}
                   delay={i * 100}
+                  variant={i === 0 ? "left" : i === 2 ? "right" : "up"}
                   className="rounded-2xl border border-zinc-200 p-6 transition-all motion-safe:hover:-translate-y-1 hover:border-zinc-300 hover:shadow-lg dark:border-zinc-800 dark:hover:border-zinc-700"
                 >
                   <h3 className="font-medium text-zinc-900 dark:text-zinc-50">
@@ -344,6 +345,7 @@ export default async function Home() {
                 <Reveal
                   key={member.name}
                   delay={(i % 2) * 100}
+                  variant="scale"
                   className="rounded-2xl border border-zinc-200 bg-zinc-50 p-6 transition-all motion-safe:hover:-translate-y-1 hover:border-zinc-300 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-950 dark:hover:border-zinc-700"
                 >
                   <h3 className="font-medium text-zinc-900 dark:text-zinc-50">
@@ -381,22 +383,11 @@ export default async function Home() {
             </h2>
             <div className="mt-10 flex flex-col gap-3">
               {FAQ.map((item) => (
-                <details
+                <FaqItem
                   key={item.question}
-                  className="group rounded-xl border border-zinc-200 bg-white px-5 py-4 dark:border-zinc-800 dark:bg-zinc-900"
-                >
-                  <summary className="cursor-pointer list-none text-sm font-medium text-zinc-900 marker:content-none dark:text-zinc-50">
-                    <span className="flex items-center justify-between gap-4">
-                      {item.question}
-                      <span className="shrink-0 text-zinc-400 transition-transform group-open:rotate-45">
-                        +
-                      </span>
-                    </span>
-                  </summary>
-                  <p className="mt-3 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
-                    {item.answer}
-                  </p>
-                </details>
+                  question={item.question}
+                  answer={item.answer}
+                />
               ))}
             </div>
           </div>

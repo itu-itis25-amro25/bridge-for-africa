@@ -16,13 +16,13 @@ export function Header() {
         <div className="flex items-center gap-5">
           <Link
             href="/donors"
-            className="hidden text-sm font-medium text-zinc-600 hover:text-zinc-900 sm:inline dark:text-zinc-400 dark:hover:text-zinc-100"
+            className="relative hidden text-sm font-medium text-zinc-600 after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-zinc-900 after:transition-all after:duration-300 hover:text-zinc-900 hover:after:w-full sm:inline dark:text-zinc-400 dark:after:bg-zinc-100 dark:hover:text-zinc-100"
           >
             Donors
           </Link>
           <a
             href={`mailto:${CONTACT_EMAIL}`}
-            className="rounded-full bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-700 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+            className="rounded-full bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition-all hover:bg-zinc-700 motion-safe:active:scale-95 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
           >
             Join us
           </a>

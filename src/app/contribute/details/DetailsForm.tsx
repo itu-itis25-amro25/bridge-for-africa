@@ -26,10 +26,6 @@ export function DetailsForm() {
     e.preventDefault();
     if (!isValid) return;
 
-    const label = anonymous
-      ? `Anonymous #${Math.floor(1000 + Math.random() * 9000)}`
-      : `${name.trim()} ${surname.trim()}`;
-
     setStatus("submitting");
     try {
       const res = await fetch("/api/contribute", {
@@ -47,7 +43,8 @@ export function DetailsForm() {
         }),
       });
       if (!res.ok) throw new Error("failed");
-      setDonorLabel(label);
+      const data = await res.json();
+      setDonorLabel(data.label);
       setStatus("done");
     } catch {
       setStatus("error");

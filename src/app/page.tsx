@@ -196,18 +196,20 @@ export default async function Home() {
         </section>
 
         {/* Photo */}
-        <Reveal variant="scale" delay={300}>
-          <section className="relative h-[360px] w-full overflow-hidden sm:h-[480px]">
-            <Image
-              src="/images/classroom.jpg"
-              alt=""
-              fill
-              priority
-              className="object-cover"
-            />
-            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-zinc-50 to-transparent dark:from-zinc-950" />
-          </section>
-        </Reveal>
+        <section className="mx-auto max-w-4xl px-6 pb-4">
+          <Reveal delay={300}>
+            <div className="relative h-[320px] w-full overflow-hidden rounded-2xl border border-zinc-200 sm:h-[420px] dark:border-zinc-800">
+              <Image
+                src="/images/classroom.jpg"
+                alt=""
+                fill
+                priority
+                className="object-cover"
+              />
+              <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/40 to-transparent sm:h-20" />
+            </div>
+          </Reveal>
+        </section>
 
         {/* Current impact */}
         <section className="border-y border-zinc-200 bg-white py-14 dark:border-zinc-800 dark:bg-zinc-900">

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Header } from "@/components/Header";
 import { CONTACT_EMAIL } from "@/lib/constants";
 import { getTotals } from "@/lib/db";
@@ -193,6 +194,20 @@ export default async function Home() {
             </div>
           </Reveal>
         </section>
+
+        {/* Photo */}
+        <Reveal variant="scale" delay={300}>
+          <section className="relative h-[360px] w-full overflow-hidden sm:h-[480px]">
+            <Image
+              src="/images/classroom.jpg"
+              alt=""
+              fill
+              priority
+              className="object-cover"
+            />
+            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-zinc-50 to-transparent dark:from-zinc-950" />
+          </section>
+        </Reveal>
 
         {/* Current impact */}
         <section className="border-y border-zinc-200 bg-white py-14 dark:border-zinc-800 dark:bg-zinc-900">

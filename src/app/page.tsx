@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Image from "next/image";
 import { Header } from "@/components/Header";
+import { ImageCarousel } from "@/components/ImageCarousel";
 import { CONTACT_EMAIL } from "@/lib/constants";
 import { getTotals } from "@/lib/db";
 import { Reveal } from "@/components/Reveal";
@@ -198,16 +198,13 @@ export default async function Home() {
         {/* Photo */}
         <section className="mx-auto max-w-4xl px-6 pb-4">
           <Reveal delay={300}>
-            <div className="relative h-[320px] w-full overflow-hidden rounded-2xl border border-zinc-200 sm:h-[420px] dark:border-zinc-800">
-              <Image
-                src="/images/classroom.jpg"
-                alt=""
-                fill
-                priority
-                className="object-cover"
-              />
-              <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/40 to-transparent sm:h-20" />
-            </div>
+            <ImageCarousel
+              images={[
+                { src: "/images/classroom.jpg" },
+                { src: "/images/writing.png" },
+                { src: "/images/presentation.png" },
+              ]}
+            />
           </Reveal>
         </section>
 

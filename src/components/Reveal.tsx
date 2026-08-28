@@ -30,7 +30,7 @@ export function Reveal({
   return (
     <div
       ref={ref}
-      className={`transition-all duration-[1400ms] ease-out ${
+      className={`transition-all duration-[3900ms] ease-out ${
         inView ? SHOWN : HIDDEN[variant]
       } ${className}`}
       style={{ transitionDelay: `${delay}ms` }}

@@ -14,7 +14,7 @@ export function CountUp({ value }: { value: number }) {
       return;
     }
 
-    const duration = 1800;
+    const duration = 4300;
     const start = performance.now();
     let frame: number;
 

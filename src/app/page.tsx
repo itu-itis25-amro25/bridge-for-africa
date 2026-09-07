@@ -182,18 +182,12 @@ export default async function Home() {
             </p>
           </Reveal>
           <Reveal delay={200}>
-            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Link
-                href="/contribute"
-                className="w-full rounded-full bg-zinc-900 px-6 py-3 text-sm font-medium text-white transition-all duration-300 hover:bg-zinc-700 motion-safe:hover:-translate-y-0.5 motion-safe:active:scale-95 sm:w-auto dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
-              >
-                Contribute monthly
-              </Link>
+            <div className="mt-10 flex items-center justify-center">
               <a
                 href="#how-it-works"
-                className="w-full rounded-full border border-zinc-300 px-6 py-3 text-sm font-medium text-zinc-900 transition-all duration-300 hover:bg-zinc-100 motion-safe:hover:-translate-y-0.5 motion-safe:active:scale-95 sm:w-auto dark:border-zinc-700 dark:text-zinc-50 dark:hover:bg-zinc-900"
+                className="rounded-full bg-zinc-900 px-6 py-3 text-sm font-medium text-white transition-all duration-300 hover:bg-zinc-700 motion-safe:hover:-translate-y-0.5 motion-safe:active:scale-95 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
               >
-                How it works
+                See how it works
               </a>
             </div>
           </Reveal>
@@ -349,6 +343,28 @@ export default async function Home() {
           </div>
         </section>
 
+        {/* Contribute CTA */}
+        <section className="bg-zinc-900 py-20 text-white dark:bg-black">
+          <Reveal className="mx-auto max-w-2xl px-6 text-center">
+            <p className="text-sm font-medium uppercase tracking-wide text-zinc-400">
+              Ready to help?
+            </p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
+              You&rsquo;ve seen why it matters. Here&rsquo;s how you help.
+            </h2>
+            <p className="mx-auto mt-4 max-w-md text-zinc-300">
+              A monthly contribution, even a small one, goes straight to a
+              child&rsquo;s tuition. You can start today.
+            </p>
+            <Link
+              href="/contribute"
+              className="mt-8 inline-block rounded-full bg-white px-6 py-3 text-sm font-medium text-zinc-900 transition-all duration-300 hover:bg-zinc-200 motion-safe:hover:-translate-y-0.5 motion-safe:active:scale-95"
+            >
+              Contribute monthly
+            </Link>
+          </Reveal>
+        </section>
+
         {/* Team */}
         <section id="team" className="border-t border-zinc-200 bg-white py-20 dark:border-zinc-800 dark:bg-zinc-900">
           <div className="mx-auto max-w-4xl px-6">
@@ -415,9 +431,10 @@ export default async function Home() {
               Become part of the group
             </h2>
             <p className="mt-4 text-zinc-600 dark:text-zinc-400">
-              It&rsquo;s a small group chat where we coordinate contributions
-              and share updates on the child we&rsquo;re supporting. Come
-              join us.
+              We&rsquo;re a small circle of people who actually make this
+              happen, and we&rsquo;d genuinely like you to be one of us. In
+              the group chat we coordinate contributions and share updates on
+              the child we&rsquo;re supporting. Come say hello.
             </p>
             <a
               href={WHATSAPP_GROUP_URL}

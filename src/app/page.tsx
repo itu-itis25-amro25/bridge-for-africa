@@ -413,11 +413,12 @@ export default async function Home() {
         <section className="bg-white py-20 dark:bg-zinc-900">
           <div className="mx-auto max-w-2xl px-6 text-center">
             <h2 className="text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
-              Want to join?
+              Become part of the group
             </h2>
             <p className="mt-4 text-zinc-600 dark:text-zinc-400">
-              Join our WhatsApp group as a member and we&rsquo;ll walk you
-              through how the monthly contribution works.
+              This isn&rsquo;t just a place for updates &mdash; it&rsquo;s the
+              small circle of people actually making this happen, together.
+              Jump in the WhatsApp group and become one of us.
             </p>
             <a
               href={WHATSAPP_GROUP_URL}
@@ -425,7 +426,7 @@ export default async function Home() {
               rel="noopener noreferrer"
               className="mt-6 inline-block rounded-full bg-zinc-900 px-6 py-3 text-sm font-medium text-white transition-all duration-300 hover:bg-zinc-700 motion-safe:hover:-translate-y-0.5 motion-safe:active:scale-95 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
             >
-              Join the WhatsApp group
+              Become a member
             </a>
           </div>
         </section>

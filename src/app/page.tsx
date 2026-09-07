@@ -1,7 +1,11 @@
 import Link from "next/link";
 import { Header } from "@/components/Header";
 import { ImageCarousel } from "@/components/ImageCarousel";
-import { CONTACT_EMAIL } from "@/lib/constants";
+import {
+  CONTACT_EMAIL,
+  WHATSAPP_GROUP_URL,
+  FOUNDER_WHATSAPP_URL,
+} from "@/lib/constants";
 import { getTotals } from "@/lib/db";
 import { Reveal } from "@/components/Reveal";
 import { CountUp } from "@/components/CountUp";
@@ -405,22 +409,62 @@ export default async function Home() {
           </div>
         </section>
 
-        {/* Join / contact */}
+        {/* Join */}
         <section className="bg-white py-20 dark:bg-zinc-900">
           <div className="mx-auto max-w-2xl px-6 text-center">
             <h2 className="text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
               Want to join?
             </h2>
             <p className="mt-4 text-zinc-600 dark:text-zinc-400">
-              Reach out and we&rsquo;ll walk you through how the monthly
-              contribution works.
+              Join our WhatsApp group as a member and we&rsquo;ll walk you
+              through how the monthly contribution works.
             </p>
             <a
-              href={`mailto:${CONTACT_EMAIL}`}
-              className="mt-6 inline-block text-lg font-medium text-zinc-900 underline decoration-zinc-300 underline-offset-4 dark:text-zinc-50 dark:decoration-zinc-700"
+              href={WHATSAPP_GROUP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-block rounded-full bg-zinc-900 px-6 py-3 text-sm font-medium text-white transition-all duration-300 hover:bg-zinc-700 motion-safe:hover:-translate-y-0.5 motion-safe:active:scale-95 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
             >
-              {CONTACT_EMAIL}
+              Join the WhatsApp group
             </a>
+          </div>
+        </section>
+
+        {/* Contact the founders */}
+        <section className="border-t border-zinc-200 bg-zinc-50 py-20 dark:border-zinc-800 dark:bg-zinc-950">
+          <div className="mx-auto max-w-2xl px-6 text-center">
+            <h2 className="text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
+              Have other questions?
+            </h2>
+            <p className="mt-4 text-zinc-600 dark:text-zinc-400">
+              Reach out to Eliya, one of the founders, directly.
+            </p>
+            <div className="mx-auto mt-8 grid max-w-md gap-4 sm:grid-cols-2">
+              <a
+                href={`mailto:${CONTACT_EMAIL}`}
+                className="rounded-xl border border-zinc-200 bg-white p-5 text-left transition-all duration-300 hover:border-zinc-300 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700"
+              >
+                <div className="text-xs font-medium uppercase tracking-wide text-zinc-400 dark:text-zinc-500">
+                  Email
+                </div>
+                <div className="mt-1 font-medium text-zinc-900 dark:text-zinc-50">
+                  {CONTACT_EMAIL}
+                </div>
+              </a>
+              <a
+                href={FOUNDER_WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-xl border border-zinc-200 bg-white p-5 text-left transition-all duration-300 hover:border-zinc-300 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700"
+              >
+                <div className="text-xs font-medium uppercase tracking-wide text-zinc-400 dark:text-zinc-500">
+                  WhatsApp
+                </div>
+                <div className="mt-1 font-medium text-zinc-900 dark:text-zinc-50">
+                  Message Eliya
+                </div>
+              </a>
+            </div>
           </div>
         </section>
       </main>

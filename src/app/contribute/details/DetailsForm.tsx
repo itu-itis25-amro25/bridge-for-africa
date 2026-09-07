@@ -4,7 +4,9 @@ import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 
-type Status = "idle" | "submitting" | "done" | "error";
+type Status = "idle" | "submitting" | "success" | "done" | "error";
+
+const SUCCESS_DISPLAY_MS = 1300;
 
 export function DetailsForm() {
   const searchParams = useSearchParams();
@@ -47,10 +49,53 @@ export function DetailsForm() {
       if (!res.ok) throw new Error("failed");
       const data = await res.json();
       setDonorLabel(data.label);
-      setStatus("done");
+      setStatus("success");
+      setTimeout(() => setStatus("done"), SUCCESS_DISPLAY_MS);
     } catch {
       setStatus("error");
     }
+  }
+
+  if (status === "submitting") {
+    return (
+      <div className="mx-auto flex max-w-md flex-col items-center justify-center px-6 py-24 text-center">
+        <div
+          className="h-16 w-16 animate-spin rounded-full border-4 border-zinc-200 border-t-zinc-900 dark:border-zinc-800 dark:border-t-white"
+          role="status"
+          aria-label="Submitting"
+        />
+        <p className="mt-6 text-sm font-medium text-zinc-500 dark:text-zinc-400">
+          Submitting your contribution&hellip;
+        </p>
+      </div>
+    );
+  }
+
+  if (status === "success") {
+    return (
+      <div className="mx-auto flex max-w-md flex-col items-center justify-center px-6 py-24 text-center">
+        <div className="relative flex h-16 w-16 items-center justify-center">
+          <span className="absolute inset-0 animate-ping rounded-full bg-green-500/40" />
+          <span className="relative flex h-16 w-16 items-center justify-center rounded-full bg-green-500">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M5 13l4 4L19 7" />
+            </svg>
+          </span>
+        </div>
+        <p className="mt-6 text-sm font-medium text-zinc-900 dark:text-zinc-50">
+          Submitted
+        </p>
+      </div>
+    );
   }
 
   if (status === "done") {
@@ -208,10 +253,10 @@ export function DetailsForm() {
 
         <button
           type="submit"
-          disabled={!isValid || status === "submitting"}
+          disabled={!isValid}
           className="mt-2 w-full rounded-full bg-zinc-900 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-zinc-700 disabled:cursor-not-allowed disabled:opacity-40 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
         >
-          {status === "submitting" ? "Submitting…" : "Confirm contribution"}
+          Confirm contribution
         </button>
       </form>
     </div>

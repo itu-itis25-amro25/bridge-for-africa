@@ -1,7 +1,7 @@
 import Link from "next/link";
-import Image from "next/image";
 import { Header } from "@/components/Header";
 import { ImageCarousel } from "@/components/ImageCarousel";
+import { BenefitCard } from "@/components/BenefitCard";
 import {
   CONTACT_EMAIL,
   WHATSAPP_GROUP_URL,
@@ -58,7 +58,9 @@ const STATS: Stat[] = [
 type Benefit = {
   title: string;
   body: string;
+  detail: string;
   source?: string;
+  sourceUrl: string;
   image: string;
 };
 
@@ -66,19 +68,31 @@ const BENEFITS: Benefit[] = [
   {
     title: "It's about cost, not ability",
     body: "In Uganda, financial barriers are the single most-cited reason children never enroll or drop out. Not distance, not capacity, not interest. Some government-aided secondary schools charge families as much as $700 a term, and education now eats up roughly 8.5% of household spending, over four times the global average.",
+    detail:
+      "This is the reason Bridge for Africa exists. When we spoke with families and school administrators, the same barrier kept coming up: unpaid tuition, not a lack of interest or ability, is what pulls children out of the classroom. In Uganda, a single term at a government-aided secondary school can cost as much as $700, while the average household already spends roughly 8.5% of its budget on education, more than four times the global average. For families already stretched thin, that gap is often the difference between a child finishing school and a child dropping out. A pooled monthly contribution, even a modest one, closes that gap directly.",
     source: "UNICEF Uganda, Policy Note 1/2024",
+    sourceUrl:
+      "https://www.unicef.org/uganda/media/16861/file/Challenges%20of%20Education%20Sector%20in%20Uganda%20in%20Brief.pdf.pdf",
     image: "/images/benefit-cost.png",
   },
   {
     title: "It breaks the cycle",
     body: "Children whose own education was funded are far more likely to keep their kids in school a generation later. Paying for one child's tuition tends to ripple well beyond that one child.",
+    detail:
+      "Education doesn't stop with one child. A parent's own schooling is one of the strongest predictors of whether their children stay in school a generation later, and each additional year of education raises lifetime earnings by roughly 9 to 10% on average worldwide. Covering one child's tuition today means that child is far more likely to keep their own kids enrolled in the future. It isn't a one-time gift. It's the first link in a much longer chain, which is exactly why we treat this as a recurring, monthly commitment rather than a single donation.",
     source: "World Bank",
+    sourceUrl:
+      "https://documents1.worldbank.org/curated/en/442521523465644318/pdf/WPS8402.pdf",
     image: "/images/benefit-cycle.png",
   },
   {
     title: "Girls see the largest gains",
     body: "Secondary education for girls is linked to a near-elimination of child marriage, and women with a secondary education typically earn almost twice as much over their lives as those with none.",
+    detail:
+      "The World Bank's 2018 report on the cost of not educating girls estimates that the gap costs the global economy between $15 and $30 trillion in lost lifetime earnings. The reverse is just as striking: secondary education for girls is linked to a near-elimination of child marriage, and women who complete secondary school typically earn close to twice as much over their lifetime as those who don't. Every contribution that keeps a girl enrolled in Uganda is working directly against those numbers.",
     source: "World Bank, 2018",
+    sourceUrl:
+      "https://www.worldbank.org/en/news/press-release/2018/07/11/not-educating-girls-costs-countries-trillions-of-dollars-says-new-world-bank-report",
     image: "/images/benefit-girls.png",
   },
 ];
@@ -325,34 +339,9 @@ export default async function Home() {
               Tuition is the single biggest reason kids in Uganda leave school.
               Paying it removes that barrier directly.
             </p>
-            <div className="mt-14 grid gap-8 sm:grid-cols-3">
+            <div className="mt-14 grid items-start gap-8 sm:grid-cols-3">
               {BENEFITS.map((benefit) => (
-                <div
-                  key={benefit.title}
-                  className="flex h-full flex-col overflow-hidden rounded-2xl border border-zinc-200 transition-all duration-300 motion-safe:hover:-translate-y-1 hover:border-zinc-300 hover:shadow-lg dark:border-zinc-800 dark:hover:border-zinc-700"
-                >
-                  <div className="p-6 pb-5">
-                    <h3 className="font-medium text-zinc-900 dark:text-zinc-50">
-                      {benefit.title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
-                      {benefit.body}
-                    </p>
-                    {benefit.source && (
-                      <p className="mt-4 text-xs font-medium uppercase tracking-wide text-zinc-400 dark:text-zinc-500">
-                        {benefit.source}
-                      </p>
-                    )}
-                  </div>
-                  <div className="relative min-h-[11rem] w-full flex-1 [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_65%)] [mask-image:linear-gradient(to_bottom,transparent,black_65%)]">
-                    <Image
-                      src={benefit.image}
-                      alt=""
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                </div>
+                <BenefitCard key={benefit.title} benefit={benefit} />
               ))}
             </div>
           </div>

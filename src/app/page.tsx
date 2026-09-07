@@ -324,11 +324,9 @@ export default async function Home() {
               the first place.
             </p>
             <div className="mt-14 grid gap-8 sm:grid-cols-3">
-              {BENEFITS.map((benefit, i) => (
-                <Reveal
+              {BENEFITS.map((benefit) => (
+                <div
                   key={benefit.title}
-                  delay={i * 180}
-                  variant={i === 0 ? "left" : i === 2 ? "right" : "up"}
                   className="rounded-2xl border border-zinc-200 p-6 transition-all duration-300 motion-safe:hover:-translate-y-1 hover:border-zinc-300 hover:shadow-lg dark:border-zinc-800 dark:hover:border-zinc-700"
                 >
                   <h3 className="font-medium text-zinc-900 dark:text-zinc-50">
@@ -342,7 +340,7 @@ export default async function Home() {
                       {benefit.source}
                     </p>
                   )}
-                </Reveal>
+                </div>
               ))}
             </div>
           </div>
@@ -409,7 +407,7 @@ export default async function Home() {
 
         {/* Join / contact */}
         <section className="bg-white py-20 dark:bg-zinc-900">
-          <Reveal className="mx-auto max-w-2xl px-6 text-center">
+          <div className="mx-auto max-w-2xl px-6 text-center">
             <h2 className="text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
               Want to join?
             </h2>
@@ -423,7 +421,7 @@ export default async function Home() {
             >
               {CONTACT_EMAIL}
             </a>
-          </Reveal>
+          </div>
         </section>
       </main>
 

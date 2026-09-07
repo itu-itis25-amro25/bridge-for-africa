@@ -329,20 +329,22 @@ export default async function Home() {
               {BENEFITS.map((benefit) => (
                 <div
                   key={benefit.title}
-                  className="rounded-2xl border border-zinc-200 p-6 transition-all duration-300 motion-safe:hover:-translate-y-1 hover:border-zinc-300 hover:shadow-lg dark:border-zinc-800 dark:hover:border-zinc-700"
+                  className="flex h-full flex-col overflow-hidden rounded-2xl border border-zinc-200 transition-all duration-300 motion-safe:hover:-translate-y-1 hover:border-zinc-300 hover:shadow-lg dark:border-zinc-800 dark:hover:border-zinc-700"
                 >
-                  <h3 className="font-medium text-zinc-900 dark:text-zinc-50">
-                    {benefit.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
-                    {benefit.body}
-                  </p>
-                  {benefit.source && (
-                    <p className="mt-4 text-xs font-medium uppercase tracking-wide text-zinc-400 dark:text-zinc-500">
-                      {benefit.source}
+                  <div className="p-6 pb-5">
+                    <h3 className="font-medium text-zinc-900 dark:text-zinc-50">
+                      {benefit.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
+                      {benefit.body}
                     </p>
-                  )}
-                  <div className="relative mt-5 h-40 w-full overflow-hidden rounded-xl [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_45%)] [mask-image:linear-gradient(to_bottom,transparent,black_45%)]">
+                    {benefit.source && (
+                      <p className="mt-4 text-xs font-medium uppercase tracking-wide text-zinc-400 dark:text-zinc-500">
+                        {benefit.source}
+                      </p>
+                    )}
+                  </div>
+                  <div className="relative min-h-[11rem] w-full flex-1 [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_65%)] [mask-image:linear-gradient(to_bottom,transparent,black_65%)]">
                     <Image
                       src={benefit.image}
                       alt=""

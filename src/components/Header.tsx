@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { BridgeMark } from "@/components/BridgeMark";
-import { CONTACT_EMAIL } from "@/lib/constants";
+import { WHATSAPP_GROUP_URL } from "@/lib/constants";
 
 export function Header() {
   return (
@@ -21,10 +21,12 @@ export function Header() {
             Donors
           </Link>
           <a
-            href={`mailto:${CONTACT_EMAIL}`}
+            href={WHATSAPP_GROUP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="rounded-full bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition-all duration-300 hover:bg-zinc-700 motion-safe:active:scale-95 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
           >
-            Join us
+            Become a member
           </a>
         </div>
       </div>

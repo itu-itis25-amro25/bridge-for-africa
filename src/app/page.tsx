@@ -360,6 +360,12 @@ export default async function Home() {
               A monthly contribution, even a small one, goes straight to a
               child&rsquo;s tuition. You can start today.
             </p>
+            <p className="mx-auto mt-4 max-w-md text-zinc-300">
+              We started with 7 members and one child. Our goal is to grow
+              this into something much bigger, and that only happens with
+              more people like you. The more of us there are, the more kids
+              we can reach.
+            </p>
             <Link
               href="/contribute"
               className="mt-8 inline-block rounded-full bg-white px-6 py-3 text-sm font-medium text-zinc-900 transition-all duration-300 hover:bg-zinc-200 motion-safe:hover:-translate-y-0.5 motion-safe:active:scale-95"

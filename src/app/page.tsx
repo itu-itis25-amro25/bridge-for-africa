@@ -37,7 +37,7 @@ const STATS: Stat[] = [
   {
     value: "1 in 5",
     label:
-      "African children of school age are currently out of school — about 20% of the continent's school-age population.",
+      "African children of school age are currently out of school.",
     source: "UNESCO, 2025",
   },
   {
@@ -63,12 +63,12 @@ type Benefit = {
 const BENEFITS: Benefit[] = [
   {
     title: "It's about cost, not ability",
-    body: "In Uganda, financial barriers are the single most-cited reason children never enroll or drop out — not distance, not capacity, not interest. Some government-aided secondary schools charge families as much as $700 a term, and education now eats up roughly 8.5% of household spending, over four times the global average.",
+    body: "In Uganda, financial barriers are the single most-cited reason children never enroll or drop out. Not distance, not capacity, not interest. Some government-aided secondary schools charge families as much as $700 a term, and education now eats up roughly 8.5% of household spending, over four times the global average.",
     source: "UNICEF Uganda, Policy Note 1/2024",
   },
   {
     title: "It breaks the cycle",
-    body: "Children whose own education was funded are far more likely to keep their kids in school a generation later — a single paid tuition tends to compound well beyond one child.",
+    body: "Children whose own education was funded are far more likely to keep their kids in school a generation later. Paying for one child's tuition tends to ripple well beyond that one child.",
     source: "World Bank",
   },
   {
@@ -85,20 +85,20 @@ type Source = {
 
 const SOURCES: Source[] = [
   {
-    label: "World Bank — returns to investment in education",
+    label: "World Bank: returns to investment in education",
     url: "https://documents1.worldbank.org/curated/en/442521523465644318/pdf/WPS8402.pdf",
   },
   {
     label:
-      "World Bank — \"Missed Opportunities: The High Cost of Not Educating Girls\" (2018)",
+      "World Bank: \"Missed Opportunities: The High Cost of Not Educating Girls\" (2018)",
     url: "https://www.worldbank.org/en/news/press-release/2018/07/11/not-educating-girls-costs-countries-trillions-of-dollars-says-new-world-bank-report",
   },
   {
-    label: "UNESCO — Global Education Monitoring Report / SDG 4 Scorecard",
+    label: "UNESCO: Global Education Monitoring Report / SDG 4 Scorecard",
     url: "https://www.unesco.org/gem-report/en",
   },
   {
-    label: "UNICEF Uganda — Overcoming the Challenges of Education in Uganda",
+    label: "UNICEF Uganda: Overcoming the Challenges of Education in Uganda",
     url: "https://www.unicef.org/uganda/media/16861/file/Challenges%20of%20Education%20Sector%20in%20Uganda%20in%20Brief.pdf.pdf",
   },
 ];
@@ -127,12 +127,12 @@ const FAQ: FaqItem[] = [
   {
     question: "Is a contribution recurring or one-time?",
     answer:
-      "Whatever works for you. Third-party contributions can be made at any time — a single gift or something you repeat, there's no fixed schedule required.",
+      "Whatever works for you. Third-party contributions can be made at any time, whether as a one-time gift or something you repeat. There's no fixed schedule to stick to.",
   },
   {
     question: "How do you know the money actually reaches the child?",
     answer:
-      "We provide proof of payment — tuition receipts or other documentation of the educational costs covered.",
+      "We provide proof of payment, like tuition receipts or other documentation of the costs covered.",
   },
 ];
 
@@ -178,7 +178,7 @@ export default async function Home() {
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-zinc-600 dark:text-zinc-400">
               We&rsquo;re a group of international students in Turkey who pool a small
               monthly contribution to pay school tuition for kids in need in
-              Africa &mdash; starting in Uganda.
+              Africa, currently in Uganda.
             </p>
           </Reveal>
           <Reveal delay={200}>
@@ -219,8 +219,8 @@ export default async function Home() {
               Right now
             </p>
             <p className="mt-3 text-2xl font-semibold text-zinc-900 sm:text-3xl dark:text-zinc-50">
-              We&rsquo;re covering one child&rsquo;s tuition in Uganda &mdash;
-              and growing.
+              We&rsquo;re currently covering one child&rsquo;s tuition in
+              Uganda, and looking to take on more.
             </p>
             <p className="mt-3 text-zinc-600 dark:text-zinc-400">
               Every new member gets us closer to supporting the next child.
@@ -232,7 +232,7 @@ export default async function Home() {
                   {totals.count} contributor{totals.count === 1 ? "" : "s"}.
                 </>
               ) : (
-                "No contributions yet — yours could be the first."
+                "No contributions yet. Yours could be the first."
               )}
             </p>
           </Reveal>
@@ -245,7 +245,7 @@ export default async function Home() {
               Why it matters
             </p>
             <h2 className="mt-3 text-center text-3xl font-semibold tracking-tight sm:text-4xl">
-              Tuition money is a lever, not a handout.
+              What the research says
             </h2>
             <div className="mt-14 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
               {STATS.map((stat, i) => (
@@ -323,9 +323,8 @@ export default async function Home() {
               The case for a few dollars a month
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-center text-zinc-600 dark:text-zinc-400">
-              Paying tuition isn&rsquo;t charity in the abstract &mdash; it
-              removes the single biggest reason kids in Uganda leave school in
-              the first place.
+              Tuition is the single biggest reason kids in Uganda leave school.
+              Paying it removes that barrier directly.
             </p>
             <div className="mt-14 grid gap-8 sm:grid-cols-3">
               {BENEFITS.map((benefit) => (
@@ -416,9 +415,9 @@ export default async function Home() {
               Become part of the group
             </h2>
             <p className="mt-4 text-zinc-600 dark:text-zinc-400">
-              This isn&rsquo;t just a place for updates &mdash; it&rsquo;s the
-              small circle of people actually making this happen, together.
-              Jump in the WhatsApp group and become one of us.
+              It&rsquo;s a small group chat where we coordinate contributions
+              and share updates on the child we&rsquo;re supporting. Come
+              join us.
             </p>
             <a
               href={WHATSAPP_GROUP_URL}
@@ -490,8 +489,7 @@ export default async function Home() {
             ))}
           </ul>
           <p className="mt-8 text-center text-sm text-zinc-500 dark:text-zinc-500">
-            Bridge for Africa &mdash; built by international students in
-            Turkey.
+            Bridge for Africa, built by international students in Turkey.
           </p>
           <p className="mt-2 text-center text-xs text-zinc-400 dark:text-zinc-600">
             <Link

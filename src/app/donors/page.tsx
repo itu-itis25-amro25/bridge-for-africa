@@ -38,7 +38,7 @@ export default async function DonorsPage() {
           <div className="mt-10 divide-y divide-zinc-200 rounded-2xl border border-zinc-200 bg-white dark:divide-zinc-800 dark:border-zinc-800 dark:bg-zinc-900">
             {donors.length === 0 ? (
               <p className="px-6 py-10 text-center text-sm text-zinc-500 dark:text-zinc-400">
-                No contributions listed yet &mdash; be the first.
+                No contributions listed yet. Be the first.
               </p>
             ) : (
               donors.map((donor, i) => (

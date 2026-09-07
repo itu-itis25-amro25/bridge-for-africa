@@ -53,8 +53,8 @@ export default function PrivacyPage() {
                 , and only if you chose to be visible. If you choose to stay
                 anonymous, you&rsquo;re shown as &ldquo;Anonymous&rdquo; with
                 a random 4-digit number instead of your name. Your age,
-                country, job, and notes are never shown publicly &mdash;
-                they&rsquo;re for our own records only.
+                country, job, and notes are never shown publicly.
+                They&rsquo;re for our own records only.
               </p>
             </section>
 

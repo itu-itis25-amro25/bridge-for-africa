@@ -202,7 +202,7 @@ export function DetailsForm() {
 
         {status === "error" && (
           <p className="text-sm text-red-600 dark:text-red-400">
-            Something went wrong submitting this &mdash; please try again.
+            Something went wrong submitting this. Please try again.
           </p>
         )}
 

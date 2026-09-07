@@ -19,7 +19,7 @@ export function ImageCarousel({ images }: { images: Slide[] }) {
   }
 
   return (
-    <div className="relative h-[320px] w-full overflow-hidden rounded-2xl border border-zinc-200 sm:h-[420px] dark:border-zinc-800">
+    <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800">
       {images.map((image, i) => (
         <div
           key={image.src}

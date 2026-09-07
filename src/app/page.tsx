@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Header } from "@/components/Header";
 import { ImageCarousel } from "@/components/ImageCarousel";
 import {
@@ -58,6 +59,7 @@ type Benefit = {
   title: string;
   body: string;
   source?: string;
+  image: string;
 };
 
 const BENEFITS: Benefit[] = [
@@ -65,16 +67,19 @@ const BENEFITS: Benefit[] = [
     title: "It's about cost, not ability",
     body: "In Uganda, financial barriers are the single most-cited reason children never enroll or drop out. Not distance, not capacity, not interest. Some government-aided secondary schools charge families as much as $700 a term, and education now eats up roughly 8.5% of household spending, over four times the global average.",
     source: "UNICEF Uganda, Policy Note 1/2024",
+    image: "/images/benefit-cost.png",
   },
   {
     title: "It breaks the cycle",
     body: "Children whose own education was funded are far more likely to keep their kids in school a generation later. Paying for one child's tuition tends to ripple well beyond that one child.",
     source: "World Bank",
+    image: "/images/benefit-cycle.png",
   },
   {
     title: "Girls see the largest gains",
     body: "Secondary education for girls is linked to a near-elimination of child marriage, and women with a secondary education typically earn almost twice as much over their lives as those with none.",
     source: "World Bank, 2018",
+    image: "/images/benefit-girls.png",
   },
 ];
 
@@ -337,6 +342,14 @@ export default async function Home() {
                       {benefit.source}
                     </p>
                   )}
+                  <div className="relative mt-5 h-40 w-full overflow-hidden rounded-xl [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_45%)] [mask-image:linear-gradient(to_bottom,transparent,black_45%)]">
+                    <Image
+                      src={benefit.image}
+                      alt=""
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
                 </div>
               ))}
             </div>

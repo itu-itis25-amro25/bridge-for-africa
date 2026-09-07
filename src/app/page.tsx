@@ -92,7 +92,7 @@ const BENEFITS: Benefit[] = [
       "The World Bank's 2018 report on the cost of not educating girls estimates that the gap costs the global economy between $15 and $30 trillion in lost lifetime earnings. The reverse is just as striking: secondary education for girls is linked to a near-elimination of child marriage, and women who complete secondary school typically earn close to twice as much over their lifetime as those who don't. Every contribution that keeps a girl enrolled in Uganda is working directly against those numbers.",
     source: "World Bank, 2018",
     sourceUrl:
-      "https://www.worldbank.org/en/news/press-release/2018/07/11/not-educating-girls-costs-countries-trillions-of-dollars-says-new-world-bank-report",
+      "https://www.worldbank.org/en/topic/education/publication/missed-opportunities-the-high-cost-of-not-educating-girls",
     image: "/images/benefit-girls.png",
   },
 ];
@@ -110,7 +110,7 @@ const SOURCES: Source[] = [
   {
     label:
       "World Bank: \"Missed Opportunities: The High Cost of Not Educating Girls\" (2018)",
-    url: "https://www.worldbank.org/en/news/press-release/2018/07/11/not-educating-girls-costs-countries-trillions-of-dollars-says-new-world-bank-report",
+    url: "https://www.worldbank.org/en/topic/education/publication/missed-opportunities-the-high-cost-of-not-educating-girls",
   },
   {
     label: "UNESCO: Global Education Monitoring Report / SDG 4 Scorecard",

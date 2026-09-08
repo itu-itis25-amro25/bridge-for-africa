@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Header } from "@/components/Header";
 import { ImageCarousel } from "@/components/ImageCarousel";
 import { BenefitCard } from "@/components/BenefitCard";
@@ -20,6 +21,7 @@ type TeamMember = {
   role: string;
   bio?: string;
   linkedin?: string;
+  photo?: string;
 };
 
 type Stat = {
@@ -160,22 +162,26 @@ const TEAM: TeamMember[] = [
     name: "Eliya Amro",
     role: "Computer Engineering, ITU",
     linkedin: "https://www.linkedin.com/in/eliya-amro-91b619351/",
+    photo: "/images/team-eliya.png",
   },
   {
     name: "Hisham Habib Abdulaziz",
     role: "Industrial Engineering, YTU",
     linkedin: "https://www.linkedin.com/in/habib-abdulaziz-hisham-02438b365/",
+    photo: "/images/team-hisham.png",
   },
   {
     name: "Rayan Ssebunya",
     role: "Economics, YTU",
     bio: "International Students Administrative & Financial Affairs Officer at YDV Gençlik.",
     linkedin: "https://www.linkedin.com/in/rayan-ssebunya-b84325244/",
+    photo: "/images/team-rayan.png",
   },
   {
     name: "Sedia Danso",
     role: "Electrical Engineering, ITU",
     linkedin: "https://www.linkedin.com/in/sedia-danso-a8aa4529b/",
+    photo: "/images/team-sedia.png",
   },
 ];
 
@@ -391,28 +397,40 @@ export default async function Home() {
                   key={member.name}
                   delay={(i % 2) * 180}
                   variant="scale"
-                  className="rounded-2xl border border-zinc-200 bg-zinc-50 p-6 transition-all duration-300 motion-safe:hover:-translate-y-1 hover:border-zinc-300 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-950 dark:hover:border-zinc-700"
+                  className="flex overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-50 transition-all duration-300 motion-safe:hover:-translate-y-1 hover:border-zinc-300 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-950 dark:hover:border-zinc-700"
                 >
-                  <h3 className="font-medium text-zinc-900 dark:text-zinc-50">
-                    {member.name}
-                  </h3>
-                  <p className="mt-1 text-sm font-medium text-zinc-500 dark:text-zinc-400">
-                    {member.role}
-                  </p>
-                  {member.bio && (
-                    <p className="mt-3 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
-                      {member.bio}
+                  <div className="flex-1 p-6">
+                    <h3 className="font-medium text-zinc-900 dark:text-zinc-50">
+                      {member.name}
+                    </h3>
+                    <p className="mt-1 text-sm font-medium text-zinc-500 dark:text-zinc-400">
+                      {member.role}
                     </p>
-                  )}
-                  {member.linkedin && (
-                    <a
-                      href={member.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-4 inline-block text-sm font-medium text-zinc-900 underline decoration-zinc-300 underline-offset-4 dark:text-zinc-50 dark:decoration-zinc-700"
-                    >
-                      LinkedIn
-                    </a>
+                    {member.bio && (
+                      <p className="mt-3 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
+                        {member.bio}
+                      </p>
+                    )}
+                    {member.linkedin && (
+                      <a
+                        href={member.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-4 inline-block text-sm font-medium text-zinc-900 underline decoration-zinc-300 underline-offset-4 dark:text-zinc-50 dark:decoration-zinc-700"
+                      >
+                        LinkedIn
+                      </a>
+                    )}
+                  </div>
+                  {member.photo && (
+                    <div className="relative w-28 shrink-0 [-webkit-mask-image:linear-gradient(to_right,transparent,black_45%)] [mask-image:linear-gradient(to_right,transparent,black_45%)] sm:w-36">
+                      <Image
+                        src={member.photo}
+                        alt=""
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
                   )}
                 </Reveal>
               ))}

@@ -382,6 +382,9 @@ export default async function Home() {
             <h2 className="text-center text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
               Who&rsquo;s behind it
             </h2>
+            <p className="mx-auto mt-4 max-w-md text-center text-zinc-600 dark:text-zinc-400">
+              Meet the students who started Bridge for Africa.
+            </p>
             <div className="mt-12 grid gap-8 sm:grid-cols-2">
               {TEAM.map((member, i) => (
                 <Reveal

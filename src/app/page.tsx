@@ -22,6 +22,7 @@ type TeamMember = {
   bio?: string;
   linkedin?: string;
   photo?: string;
+  photoPosition?: string;
 };
 
 type Stat = {
@@ -185,6 +186,7 @@ const TEAM: TeamMember[] = [
     bio: "Organizes external and secondary logistics for the project.",
     linkedin: "https://www.linkedin.com/in/sedia-danso-a8aa4529b/",
     photo: "/images/team-sedia.png",
+    photoPosition: "40% center",
   },
 ];
 
@@ -432,6 +434,11 @@ export default async function Home() {
                         alt=""
                         fill
                         className="object-cover"
+                        style={
+                          member.photoPosition
+                            ? { objectPosition: member.photoPosition }
+                            : undefined
+                        }
                       />
                     </div>
                   )}

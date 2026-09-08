@@ -1,21 +1,21 @@
 "use client";
 
-import { useState } from "react";
-
 export function FaqItem({
   question,
   answer,
+  open,
+  onToggle,
 }: {
   question: string;
   answer: string;
+  open: boolean;
+  onToggle: () => void;
 }) {
-  const [open, setOpen] = useState(false);
-
   return (
     <div className="rounded-xl border border-zinc-200 bg-white px-5 py-4 dark:border-zinc-800 dark:bg-zinc-900">
       <button
         type="button"
-        onClick={() => setOpen((v) => !v)}
+        onClick={onToggle}
         aria-expanded={open}
         className="flex w-full items-center justify-between gap-4 text-left text-sm font-medium text-zinc-900 dark:text-zinc-50"
       >

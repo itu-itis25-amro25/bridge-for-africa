@@ -12,7 +12,7 @@ import { getTotals } from "@/lib/db";
 import { Reveal } from "@/components/Reveal";
 import { CountUp } from "@/components/CountUp";
 import { DrawLine } from "@/components/DrawLine";
-import { FaqItem } from "@/components/FaqItem";
+import { FaqList } from "@/components/FaqList";
 
 export const dynamic = "force-dynamic";
 
@@ -169,21 +169,21 @@ const TEAM: TeamMember[] = [
   {
     name: "Hisham Habib Abdulaziz",
     role: "Industrial Engineering, YTU",
-    bio: "Oversees the project's overall direction and vision planning.",
+    bio: "Oversees the project's overall direction and vision planning, setting the long-term strategy for how Bridge for Africa grows and shaping the priorities the team works toward every month.",
     linkedin: "https://www.linkedin.com/in/habib-abdulaziz-hisham-02438b365/",
     photo: "/images/team-hisham.png",
   },
   {
     name: "Rayan Ssebunya",
     role: "Economics, YTU",
-    bio: "Organizes external and secondary logistics for the project.",
+    bio: "Organizes external and secondary logistics for the project, coordinating everything outside day-to-day operations so outreach, partnerships, and new opportunities stay on track.",
     linkedin: "https://www.linkedin.com/in/rayan-ssebunya-b84325244/",
     photo: "/images/team-rayan.png",
   },
   {
     name: "Sedia Danso",
     role: "Electrical Engineering, ITU",
-    bio: "Organizes external and secondary logistics for the project.",
+    bio: "Organizes external and secondary logistics for the project, managing the moving pieces outside daily operations so the rest of the team can stay focused on their core responsibilities.",
     linkedin: "https://www.linkedin.com/in/sedia-danso-a8aa4529b/",
     photo: "/images/team-sedia.png",
     photoPosition: "40% center",
@@ -454,15 +454,7 @@ export default async function Home() {
             <h2 className="text-center text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
               Frequently asked questions
             </h2>
-            <div className="mt-10 flex flex-col gap-3">
-              {FAQ.map((item) => (
-                <FaqItem
-                  key={item.question}
-                  question={item.question}
-                  answer={item.answer}
-                />
-              ))}
-            </div>
+            <FaqList items={FAQ} />
           </div>
         </section>
 

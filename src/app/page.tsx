@@ -170,6 +170,7 @@ const TEAM: TeamMember[] = [
     name: "Rayan Ssebunya",
     role: "Economics, YTU",
     bio: "International Students Administrative & Financial Affairs Officer at YDV Gençlik.",
+    linkedin: "https://www.linkedin.com/in/rayan-ssebunya-b84325244/",
   },
   {
     name: "Sedia Danso",

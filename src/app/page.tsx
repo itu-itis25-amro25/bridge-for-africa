@@ -325,6 +325,17 @@ export default async function Home() {
               </p>
             </Reveal>
           </div>
+          <Reveal delay={450} className="mt-14 text-center">
+            <Link
+              href="/contribute"
+              className="group inline-flex items-center gap-2 rounded-full border border-zinc-300 px-6 py-3 text-sm font-medium text-zinc-900 transition-all duration-300 hover:border-zinc-900 hover:bg-zinc-900 hover:text-white motion-safe:hover:-translate-y-0.5 motion-safe:active:scale-95 dark:border-zinc-700 dark:text-zinc-50 dark:hover:border-white dark:hover:bg-white dark:hover:text-zinc-900"
+            >
+              Help fund the next child
+              <span className="transition-transform duration-300 group-hover:translate-x-0.5">
+                →
+              </span>
+            </Link>
+          </Reveal>
         </section>
 
         {/* Why it matters — stats band */}

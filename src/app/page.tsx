@@ -557,26 +557,51 @@ export default async function Home() {
             <div className="mx-auto mt-8 grid max-w-md gap-4 sm:grid-cols-2">
               <a
                 href={`mailto:${CONTACT_EMAIL}`}
-                className="rounded-xl border border-zinc-200 bg-white p-5 text-left transition-all duration-300 hover:border-zinc-300 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700"
+                className="relative overflow-hidden rounded-xl border border-zinc-200 bg-white p-5 text-left transition-all duration-300 hover:border-zinc-300 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700"
               >
-                <div className="text-xs font-medium uppercase tracking-wide text-zinc-400 dark:text-zinc-500">
-                  Email
-                </div>
-                <div className="mt-1 font-medium text-zinc-900 dark:text-zinc-50">
-                  {CONTACT_EMAIL}
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="pointer-events-none absolute -right-5 -bottom-5 h-28 w-28 text-zinc-900/[0.06] dark:text-zinc-50/[0.08]"
+                >
+                  <rect x="2" y="4" width="20" height="16" rx="2" />
+                  <path d="m3 6.5 9 6.5 9-6.5" />
+                </svg>
+                <div className="relative">
+                  <div className="text-xs font-medium uppercase tracking-wide text-zinc-400 dark:text-zinc-500">
+                    Email
+                  </div>
+                  <div className="mt-1 font-medium text-zinc-900 dark:text-zinc-50">
+                    {CONTACT_EMAIL}
+                  </div>
                 </div>
               </a>
               <a
                 href={FOUNDER_WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-xl border border-zinc-200 bg-white p-5 text-left transition-all duration-300 hover:border-zinc-300 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700"
+                className="relative overflow-hidden rounded-xl border border-zinc-200 bg-white p-5 text-left transition-all duration-300 hover:border-zinc-300 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700"
               >
-                <div className="text-xs font-medium uppercase tracking-wide text-zinc-400 dark:text-zinc-500">
-                  WhatsApp
-                </div>
-                <div className="mt-1 font-medium text-zinc-900 dark:text-zinc-50">
-                  Message Eliya
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="pointer-events-none absolute -right-5 -bottom-5 h-28 w-28 text-green-600/[0.06] dark:text-green-400/[0.08]"
+                >
+                  <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.48 1.32 5L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m5.83 14.11c-.25.7-1.45 1.33-2 1.42-.51.08-1.15.11-1.86-.12a17 17 0 0 1-1.68-.62c-2.96-1.28-4.89-4.26-5.04-4.46-.15-.2-1.2-1.6-1.2-3.05 0-1.45.76-2.16 1.03-2.46.27-.3.59-.37.79-.37h.57c.18 0 .43-.07.67.51.25.6.85 2.07.92 2.22.07.15.12.33.02.53-.1.2-.15.32-.3.5-.15.18-.31.4-.44.53-.15.15-.3.32-.13.62.17.3.76 1.25 1.63 2.02 1.12 1 2.06 1.31 2.36 1.46.3.15.48.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.73.82 2.03.97.3.15.5.22.57.35.08.13.08.75-.17 1.45" />
+                </svg>
+                <div className="relative">
+                  <div className="text-xs font-medium uppercase tracking-wide text-zinc-400 dark:text-zinc-500">
+                    WhatsApp
+                  </div>
+                  <div className="mt-1 font-medium text-zinc-900 dark:text-zinc-50">
+                    Message Eliya
+                  </div>
                 </div>
               </a>
             </div>

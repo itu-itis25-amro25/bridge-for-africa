@@ -5,7 +5,10 @@ import { useInView } from "@/lib/useInView";
 
 export function CountUp({ value }: { value: number }) {
   const { ref, inView } = useInView<HTMLSpanElement>(0.5);
-  const [display, setDisplay] = useState(0);
+  // Start at the real value, not 0 — a viewer who never triggers the
+  // scroll animation (no JS, reduced motion, a crawler, a quick glance)
+  // should never see a false "0" next to a real, nonzero total.
+  const [display, setDisplay] = useState(value);
 
   useEffect(() => {
     if (!inView) return;
@@ -14,14 +17,17 @@ export function CountUp({ value }: { value: number }) {
       return;
     }
 
-    const duration = 4300;
+    // Animate up from a nearby starting point rather than 0, so the
+    // number is always in the right ballpark even mid-animation.
+    const startValue = Math.max(0, value - Math.max(5, Math.round(value * 0.15)));
+    const duration = 1400;
     const start = performance.now();
     let frame: number;
 
     function tick(now: number) {
       const progress = Math.min((now - start) / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
-      setDisplay(Math.round(eased * value));
+      setDisplay(Math.round(startValue + eased * (value - startValue)));
       if (progress < 1) frame = requestAnimationFrame(tick);
     }
     frame = requestAnimationFrame(tick);

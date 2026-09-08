@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Header } from "@/components/Header";
+import { BridgeMark } from "@/components/BridgeMark";
 import { ImageCarousel } from "@/components/ImageCarousel";
 import { BenefitCard } from "@/components/BenefitCard";
 import {
@@ -60,6 +61,7 @@ const STATS: Stat[] = [
 
 type Benefit = {
   title: string;
+  stat: string;
   body: string;
   detail: string;
   source?: string;
@@ -70,6 +72,7 @@ type Benefit = {
 const BENEFITS: Benefit[] = [
   {
     title: "It's about cost, not ability",
+    stat: "$700/term",
     body: "In Uganda, financial barriers are the single most-cited reason children never enroll or drop out. Not distance, not capacity, not interest. Some government-aided secondary schools charge families as much as $700 a term, and education now eats up roughly 8.5% of household spending, over four times the global average.",
     detail:
       "This is the reason Bridge for Africa exists. When we spoke with families and school administrators, the same barrier kept coming up: unpaid tuition, not a lack of interest or ability, is what pulls children out of the classroom. In Uganda, a single term at a government-aided secondary school can cost as much as $700, while the average household already spends roughly 8.5% of its budget on education, more than four times the global average. For families already stretched thin, that gap is often the difference between a child finishing school and a child dropping out. A pooled monthly contribution, even a modest one, closes that gap directly.",
@@ -80,6 +83,7 @@ const BENEFITS: Benefit[] = [
   },
   {
     title: "It breaks the cycle",
+    stat: "9–10%",
     body: "Children whose own education was funded are far more likely to keep their kids in school a generation later. Paying for one child's tuition tends to ripple well beyond that one child.",
     detail:
       "Education doesn't stop with one child. A parent's own schooling is one of the strongest predictors of whether their children stay in school a generation later, and each additional year of education raises lifetime earnings by roughly 9 to 10% on average worldwide. Covering one child's tuition today means that child is far more likely to keep their own kids enrolled in the future. It isn't a one-time gift. It's the first link in a much longer chain, which is exactly why we treat this as a recurring, monthly commitment rather than a single donation.",
@@ -90,6 +94,7 @@ const BENEFITS: Benefit[] = [
   },
   {
     title: "Girls see the largest gains",
+    stat: "$15–30T",
     body: "Secondary education for girls is linked to a near-elimination of child marriage, and women with a secondary education typically earn almost twice as much over their lives as those with none.",
     detail:
       "The World Bank's 2018 report on the cost of not educating girls estimates that the gap costs the global economy between $15 and $30 trillion in lost lifetime earnings. The reverse is just as striking: secondary education for girls is linked to a near-elimination of child marriage, and women who complete secondary school typically earn close to twice as much over their lifetime as those who don't. Every contribution that keeps a girl enrolled in Uganda is working directly against those numbers.",
@@ -176,14 +181,14 @@ const TEAM: TeamMember[] = [
   {
     name: "Rayan Ssebunya",
     role: "Economics, YTU",
-    bio: "Organizes external and secondary logistics for the project, coordinating everything outside day-to-day operations so outreach, partnerships, and new opportunities stay on track.",
+    bio: "Leads outreach to potential contributors and partner organizations, and handles most of the project's external communication and relationship-building.",
     linkedin: "https://www.linkedin.com/in/rayan-ssebunya-b84325244/",
     photo: "/images/team-rayan.png",
   },
   {
     name: "Sedia Danso",
     role: "Electrical Engineering, ITU",
-    bio: "Organizes external and secondary logistics for the project, managing the moving pieces outside daily operations so the rest of the team can stay focused on their core responsibilities.",
+    bio: "Coordinates logistics with the school in Uganda, including scheduling and documentation, and makes sure tuition payments and proof of payment come through as expected.",
     linkedin: "https://www.linkedin.com/in/sedia-danso-a8aa4529b/",
     photo: "/images/team-sedia.png",
     photoPosition: "40% center",
@@ -238,7 +243,7 @@ export default async function Home() {
         </section>
 
         {/* Current impact */}
-        <section className="border-y border-zinc-200 bg-white py-14 dark:border-zinc-800 dark:bg-zinc-900">
+        <section id="impact" className="border-y border-zinc-200 bg-white py-14 dark:border-zinc-800 dark:bg-zinc-900">
           <Reveal className="mx-auto max-w-4xl px-6 text-center">
             <p className="text-sm font-medium uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
               Right now
@@ -253,14 +258,73 @@ export default async function Home() {
             <p className="mt-6 text-sm font-medium text-zinc-500 dark:text-zinc-400">
               {totals.count > 0 ? (
                 <>
-                  ₺<CountUp value={totals.total} /> raised so far from{" "}
-                  {totals.count} contributor{totals.count === 1 ? "" : "s"}.
+                  {totals.count} contributor{totals.count === 1 ? "" : "s"}{" "}
+                  supporting the project so far
+                  {totals.total > 0 && (
+                    <>
+                      , with ₺<CountUp value={totals.total} /> raised toward
+                      tuition
+                    </>
+                  )}
+                  .
                 </>
               ) : (
                 "No contributions yet. Yours could be the first."
               )}
             </p>
           </Reveal>
+        </section>
+
+        {/* Transparency */}
+        <section className="mx-auto max-w-4xl px-6 py-20">
+          <Reveal className="text-center">
+            <h2 className="text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
+              Where your contribution goes
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-zinc-600 dark:text-zinc-400">
+              Bridge for Africa is currently an independent, student-led
+              project, and not yet a registered nonprofit. Here&rsquo;s
+              exactly how we handle contributions in the meantime.
+            </p>
+          </Reveal>
+          <div className="mt-14 grid gap-10 sm:grid-cols-3">
+            <Reveal delay={0} className="text-center">
+              <p className="text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
+                100%
+              </p>
+              <h3 className="mt-2 font-medium text-zinc-900 dark:text-zinc-50">
+                Goes to tuition
+              </h3>
+              <p className="mt-2 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
+                There&rsquo;s no organization to fund. Every contribution goes
+                directly toward a child&rsquo;s school fees.
+              </p>
+            </Reveal>
+            <Reveal delay={150} className="text-center">
+              <p className="text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
+                Proof
+              </p>
+              <h3 className="mt-2 font-medium text-zinc-900 dark:text-zinc-50">
+                Payment provided
+              </h3>
+              <p className="mt-2 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
+                We share tuition receipts and other documentation showing the
+                costs were actually covered.
+              </p>
+            </Reveal>
+            <Reveal delay={300} className="text-center">
+              <p className="text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
+                1 at a time
+              </p>
+              <h3 className="mt-2 font-medium text-zinc-900 dark:text-zinc-50">
+                One child at a time
+              </h3>
+              <p className="mt-2 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
+                Contributions are pooled until we can responsibly take on the
+                next child who needs support.
+              </p>
+            </Reveal>
+          </div>
         </section>
 
         {/* Why it matters — stats band */}
@@ -520,36 +584,142 @@ export default async function Home() {
         </section>
       </main>
 
-      <footer className="border-t border-zinc-200 py-10 dark:border-zinc-800">
+      <footer className="border-t border-zinc-200 py-14 dark:border-zinc-800">
         <div className="mx-auto max-w-4xl px-6">
-          <p className="text-xs font-medium uppercase tracking-wide text-zinc-400 dark:text-zinc-500">
-            Sources
-          </p>
-          <ul className="mt-3 flex flex-col gap-1.5 sm:flex-row sm:flex-wrap sm:gap-x-6 sm:gap-y-1.5">
-            {SOURCES.map((source) => (
-              <li key={source.url}>
-                <a
-                  href={source.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs text-zinc-500 underline decoration-zinc-300 underline-offset-4 hover:text-zinc-700 dark:text-zinc-500 dark:decoration-zinc-700 dark:hover:text-zinc-300"
-                >
-                  {source.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-          <p className="mt-8 text-center text-sm text-zinc-500 dark:text-zinc-500">
-            Bridge for Africa, built by international students in Turkey.
-          </p>
-          <p className="mt-2 text-center text-xs text-zinc-400 dark:text-zinc-600">
-            <Link
-              href="/privacy"
-              className="underline decoration-zinc-300 underline-offset-4 hover:text-zinc-600 dark:decoration-zinc-700 dark:hover:text-zinc-400"
-            >
-              Privacy
-            </Link>
-          </p>
+          <div className="grid gap-10 sm:grid-cols-[1.4fr_1fr_1fr_1fr]">
+            <div>
+              <div className="flex items-center gap-2 text-base font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
+                <BridgeMark className="h-[18px] w-[18px]" />
+                Bridge for Africa
+              </div>
+              <p className="mt-3 max-w-xs text-sm leading-6 text-zinc-500 dark:text-zinc-400">
+                Students building access to education, one child at a time.
+              </p>
+            </div>
+            <div>
+              <p className="text-xs font-medium uppercase tracking-wide text-zinc-400 dark:text-zinc-500">
+                Project
+              </p>
+              <ul className="mt-3 flex flex-col gap-2 text-sm">
+                <li>
+                  <a
+                    href="#how-it-works"
+                    className="text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+                  >
+                    How it works
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#impact"
+                    className="text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+                  >
+                    Impact
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#team"
+                    className="text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+                  >
+                    Team
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#faq"
+                    className="text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+                  >
+                    FAQ
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className="text-xs font-medium uppercase tracking-wide text-zinc-400 dark:text-zinc-500">
+                Get involved
+              </p>
+              <ul className="mt-3 flex flex-col gap-2 text-sm">
+                <li>
+                  <Link
+                    href="/contribute"
+                    className="text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+                  >
+                    Contribute
+                  </Link>
+                </li>
+                <li>
+                  <a
+                    href={WHATSAPP_GROUP_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+                  >
+                    Join us
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className="text-xs font-medium uppercase tracking-wide text-zinc-400 dark:text-zinc-500">
+                Contact
+              </p>
+              <ul className="mt-3 flex flex-col gap-2 text-sm">
+                <li>
+                  <a
+                    href={`mailto:${CONTACT_EMAIL}`}
+                    className="text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+                  >
+                    Email
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={FOUNDER_WHATSAPP_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+                  >
+                    WhatsApp
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="mt-12 border-t border-zinc-200 pt-8 dark:border-zinc-800">
+            <p className="text-xs font-medium uppercase tracking-wide text-zinc-400 dark:text-zinc-500">
+              Sources
+            </p>
+            <ul className="mt-3 flex flex-col gap-1.5 sm:flex-row sm:flex-wrap sm:gap-x-6 sm:gap-y-1.5">
+              {SOURCES.map((source) => (
+                <li key={source.url}>
+                  <a
+                    href={source.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-zinc-500 underline decoration-zinc-300 underline-offset-4 hover:text-zinc-700 dark:text-zinc-500 dark:decoration-zinc-700 dark:hover:text-zinc-300"
+                  >
+                    {source.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="mt-8 flex flex-col items-center gap-2 sm:flex-row sm:justify-between">
+            <p className="text-sm text-zinc-500 dark:text-zinc-500">
+              Bridge for Africa, built by international students in Turkey.
+            </p>
+            <p className="text-xs text-zinc-400 dark:text-zinc-600">
+              <Link
+                href="/privacy"
+                className="underline decoration-zinc-300 underline-offset-4 hover:text-zinc-600 dark:decoration-zinc-700 dark:hover:text-zinc-400"
+              >
+                Privacy
+              </Link>
+            </p>
+          </div>
         </div>
       </footer>
     </div>

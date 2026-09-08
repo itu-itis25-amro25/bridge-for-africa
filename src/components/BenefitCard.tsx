@@ -5,6 +5,7 @@ import Image from "next/image";
 
 type Benefit = {
   title: string;
+  stat: string;
   body: string;
   detail: string;
   source?: string;
@@ -36,7 +37,10 @@ export function BenefitCard({ benefit }: { benefit: Benefit }) {
         className="flex flex-col overflow-hidden rounded-2xl border border-zinc-200 text-left transition-all duration-300 motion-safe:hover:-translate-y-1 hover:border-zinc-300 hover:shadow-lg dark:border-zinc-800 dark:hover:border-zinc-700"
       >
         <div className="p-6 pb-5">
-          <h3 className="font-medium text-zinc-900 dark:text-zinc-50">
+          <p className="text-3xl font-semibold tracking-tight tabular-nums text-zinc-900 dark:text-zinc-50">
+            {benefit.stat}
+          </p>
+          <h3 className="mt-2 font-medium text-zinc-900 dark:text-zinc-50">
             {benefit.title}
           </h3>
           <p className="mt-3 text-sm leading-6 text-zinc-600 dark:text-zinc-400">

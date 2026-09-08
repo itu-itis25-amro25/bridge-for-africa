@@ -9,7 +9,16 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: true, label: `${name} ${surname}` });
   }
 
-  if (!name || !surname || !age || !country || !amount) {
+  const amountNumber = Number(amount);
+
+  if (
+    !name ||
+    !surname ||
+    !age ||
+    !country ||
+    !Number.isFinite(amountNumber) ||
+    amountNumber <= 0
+  ) {
     return NextResponse.json({ error: "missing fields" }, { status: 400 });
   }
 
@@ -20,7 +29,7 @@ export async function POST(req: NextRequest) {
   await ensureSchema();
   await sql`
     INSERT INTO donors (label, amount, is_anonymous, name, surname, age, country, job, notes)
-    VALUES (${label}, ${amount}, ${Boolean(anonymous)}, ${name}, ${surname}, ${age}, ${country}, ${job || null}, ${notes || null})
+    VALUES (${label}, ${amountNumber}, ${Boolean(anonymous)}, ${name}, ${surname}, ${age}, ${country}, ${job || null}, ${notes || null})
   `;
 
   return NextResponse.json({ ok: true, label });

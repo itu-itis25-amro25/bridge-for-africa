@@ -13,10 +13,27 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://bridge-for-africa.vercel.app";
+const title = "Bridge for Africa";
+const description =
+  "A group of international students in Turkey pooling monthly contributions to pay school tuition for kids in need in Africa.";
+
 export const metadata: Metadata = {
-  title: "Bridge for Africa",
-  description:
-    "A group of international students in Turkey pooling monthly contributions to pay school tuition for kids in need in Africa.",
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
+  openGraph: {
+    title,
+    description,
+    siteName: title,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

@@ -16,6 +16,7 @@ export function DetailsForm() {
   const [surname, setSurname] = useState("");
   const [age, setAge] = useState("");
   const [country, setCountry] = useState("");
+  const [email, setEmail] = useState("");
   const [job, setJob] = useState("");
   const [anonymous, setAnonymous] = useState(false);
   const [notes, setNotes] = useState("");
@@ -23,7 +24,9 @@ export function DetailsForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [donorLabel, setDonorLabel] = useState("");
 
-  const isValid = name.trim() && surname.trim() && age.trim() && country.trim();
+  const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+  const isValid =
+    name.trim() && surname.trim() && age.trim() && country.trim() && emailValid;
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -40,6 +43,7 @@ export function DetailsForm() {
           surname: surname.trim(),
           age,
           country: country.trim(),
+          email: email.trim(),
           job: job.trim(),
           anonymous,
           notes: notes.trim(),
@@ -108,8 +112,9 @@ export function DetailsForm() {
           We&rsquo;ve recorded your ₺{amount} pledge
         </h1>
         <p className="mt-3 text-zinc-600 dark:text-zinc-400">
-          Listed as <span className="font-medium">{donorLabel}</span>.
-          We&rsquo;ll follow up separately with payment details.
+          Listed as <span className="font-medium">{donorLabel}</span>. We&rsquo;ll
+          email <span className="font-medium">{email}</span> with payment
+          details shortly.
         </p>
         <Link
           href="/"
@@ -196,6 +201,18 @@ export function DetailsForm() {
             />
           </Field>
         </div>
+
+        <Field label="Email" htmlFor="email">
+          <input
+            id="email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            placeholder="So we can follow up with payment details"
+            className={inputClass}
+          />
+        </Field>
 
         <Field label="Job / Position" htmlFor="job" optional>
           <input

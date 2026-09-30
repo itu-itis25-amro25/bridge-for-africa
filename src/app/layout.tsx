@@ -13,8 +13,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://bridge-for-africa.vercel.app";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://bridgeforafrica.com";
 const title = "Bridge for Africa";
 const description =
   "A group of international students in Turkey pooling monthly contributions to pay school tuition for kids in need in Africa.";
